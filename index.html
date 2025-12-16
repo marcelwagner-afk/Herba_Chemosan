@@ -1,0 +1,2914 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Herba Chemosan | RISE with SAP Advisory | TIMETOACT GROUP</title>
+  <style>
+    @import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700;800;900&family=Space+Grotesk:wght@400;500;600;700&display=swap');
+    
+    * { margin: 0; padding: 0; box-sizing: border-box; }
+    
+    :root {
+      --herba-green: #00A651;
+      --herba-green-dark: #008542;
+      --herba-green-light: #4DC47D;
+      --herba-black: #0A1A14;
+      --herba-dark: #0F2318;
+      --herba-white: #FFFFFF;
+      --herba-gray: #1A3025;
+      --herba-gray-light: #2A4035;
+      --herba-text-muted: #6B8F7A;
+      --tta-teal: #098F9B;
+      --tta-orange: #DA5500;
+      --tta-blue: #205EA7;
+      --rise-gold: #E8B923;
+    }
+    
+    body {
+      font-family: 'Poppins', -apple-system, BlinkMacSystemFont, sans-serif;
+      background: var(--herba-black);
+      color: var(--herba-white);
+      line-height: 1.6;
+    }
+    
+    /* Brandbar */
+    .herba-brandbar {
+      position: fixed;
+      top: 0;
+      left: 0;
+      right: 0;
+      height: 5px;
+      display: flex;
+      z-index: 1000;
+    }
+    .herba-brandbar span:nth-child(1) { flex: 1; background: var(--herba-green); }
+    .herba-brandbar span:nth-child(2) { flex: 1; background: var(--herba-white); }
+    .herba-brandbar span:nth-child(3) { flex: 1; background: var(--tta-orange); }
+    
+    /* Navigation */
+    .nav-bar {
+      position: fixed;
+      top: 5px;
+      left: 0;
+      right: 0;
+      background: rgba(10, 26, 20, 0.95);
+      backdrop-filter: blur(10px);
+      padding: 12px 40px;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      z-index: 999;
+      border-bottom: 1px solid rgba(0, 166, 81, 0.2);
+    }
+    .nav-logo { display: flex; align-items: center; gap: 20px; }
+    .nav-logo img { height: 32px; }
+    .nav-links { display: flex; gap: 24px; }
+    .nav-link {
+      color: var(--herba-text-muted);
+      text-decoration: none;
+      font-size: 13px;
+      font-weight: 500;
+      transition: color 0.2s;
+    }
+    .nav-link:hover { color: var(--herba-green); }
+    
+    /* Header */
+    .header {
+      background: linear-gradient(180deg, var(--herba-dark) 0%, var(--herba-black) 100%);
+      padding: 120px 60px 60px;
+      position: relative;
+    }
+    .header::before {
+      content: '';
+      position: absolute;
+      top: 0;
+      right: 0;
+      width: 50%;
+      height: 100%;
+      background: linear-gradient(135deg, transparent 0%, rgba(0, 166, 81, 0.08) 100%);
+    }
+    .header-content {
+      max-width: 1400px;
+      margin: 0 auto;
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 60px;
+      align-items: center;
+      position: relative;
+      z-index: 1;
+    }
+    .logo-area { display: flex; flex-direction: column; gap: 30px; }
+    .dual-logos { display: flex; align-items: center; gap: 40px; }
+    .logo-divider {
+      width: 2px;
+      height: 50px;
+      background: linear-gradient(180deg, transparent, var(--herba-green), transparent);
+    }
+    .header-tag {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      background: linear-gradient(135deg, rgba(232, 185, 35, 0.2) 0%, rgba(218, 85, 0, 0.2) 100%);
+      border: 1px solid var(--rise-gold);
+      padding: 8px 16px;
+      border-radius: 30px;
+      font-size: 11px;
+      font-weight: 700;
+      letter-spacing: 2px;
+      text-transform: uppercase;
+      color: var(--rise-gold);
+      margin-bottom: 20px;
+    }
+    .header-tag::before {
+      content: '';
+      width: 8px;
+      height: 8px;
+      background: var(--rise-gold);
+      border-radius: 50%;
+      animation: pulse 2s infinite;
+    }
+    @keyframes pulse {
+      0%, 100% { opacity: 1; transform: scale(1); }
+      50% { opacity: 0.5; transform: scale(0.8); }
+    }
+    .header-title h1 {
+      font-family: 'Space Grotesk', sans-serif;
+      font-size: 48px;
+      font-weight: 700;
+      line-height: 1.1;
+      margin-bottom: 16px;
+    }
+    .header-title h1 span { color: var(--herba-green); }
+    .header-title p {
+      font-size: 16px;
+      color: var(--herba-text-muted);
+      max-width: 500px;
+    }
+    
+    /* Company Stats */
+    .company-stats {
+      background: rgba(0, 166, 81, 0.08);
+      border: 1px solid rgba(0, 166, 81, 0.2);
+      border-radius: 20px;
+      padding: 30px;
+    }
+    .company-stats-header {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      margin-bottom: 24px;
+      padding-bottom: 16px;
+      border-bottom: 1px solid rgba(0, 166, 81, 0.2);
+    }
+    .company-stats-title {
+      font-size: 12px;
+      font-weight: 600;
+      letter-spacing: 2px;
+      text-transform: uppercase;
+      color: var(--herba-green);
+    }
+    .deal-badge {
+      background: var(--herba-green);
+      color: var(--herba-white);
+      padding: 6px 14px;
+      border-radius: 20px;
+      font-size: 10px;
+      font-weight: 700;
+      letter-spacing: 1px;
+      text-transform: uppercase;
+    }
+    .stats-grid {
+      display: grid;
+      grid-template-columns: repeat(2, 1fr);
+      gap: 20px;
+    }
+    .stat-item {
+      text-align: center;
+      padding: 16px;
+      background: rgba(0, 166, 81, 0.05);
+      border-radius: 12px;
+      border: 1px solid rgba(0, 166, 81, 0.1);
+    }
+    .stat-value {
+      font-family: 'Space Grotesk', sans-serif;
+      font-size: 28px;
+      font-weight: 700;
+      color: var(--herba-green);
+      margin-bottom: 4px;
+    }
+    .stat-label {
+      font-size: 11px;
+      color: var(--herba-text-muted);
+      text-transform: uppercase;
+      letter-spacing: 1px;
+    }
+    
+    /* Sections */
+    .section {
+      padding: 80px 60px;
+      max-width: 1400px;
+      margin: 0 auto;
+    }
+    .section.full-width {
+      max-width: none;
+      padding: 80px 60px;
+    }
+    .section-header {
+      text-align: center;
+      margin-bottom: 60px;
+    }
+    .section-tag {
+      display: inline-block;
+      background: var(--herba-green);
+      color: var(--herba-white);
+      padding: 6px 16px;
+      border-radius: 20px;
+      font-size: 10px;
+      font-weight: 700;
+      letter-spacing: 2px;
+      text-transform: uppercase;
+      margin-bottom: 20px;
+    }
+    .section-title {
+      font-family: 'Space Grotesk', sans-serif;
+      font-size: 42px;
+      font-weight: 700;
+      margin-bottom: 16px;
+    }
+    .section-title span { color: var(--herba-green); }
+    .section-description {
+      font-size: 16px;
+      color: var(--herba-text-muted);
+      max-width: 700px;
+      margin: 0 auto;
+    }
+    
+    /* RISE Explainer */
+    .rise-section {
+      background: linear-gradient(180deg, var(--herba-dark) 0%, var(--herba-black) 100%);
+      padding: 80px 60px;
+    }
+    .rise-container { max-width: 1400px; margin: 0 auto; }
+    .rise-intro {
+      display: grid; grid-template-columns: 1fr 1fr; gap: 40px; margin-bottom: 50px; align-items: center;
+    }
+    .rise-analogy {
+      background: linear-gradient(135deg, rgba(232,185,35,0.1) 0%, rgba(218,85,0,0.1) 100%);
+      border: 1px solid rgba(232,185,35,0.3); border-radius: 16px; padding: 30px;
+    }
+    .rise-analogy-icon { font-size: 48px; margin-bottom: 16px; }
+    .rise-analogy h3 { font-family: 'Space Grotesk', sans-serif; font-size: 20px; margin-bottom: 12px; color: var(--rise-gold); }
+    .rise-analogy p { font-size: 14px; color: var(--herba-text-muted); line-height: 1.7; }
+    .rise-analogy .highlight { color: var(--herba-white); font-weight: 500; }
+    
+    .rise-bundle { display: grid; grid-template-columns: repeat(4, 1fr); gap: 16px; margin-bottom: 50px; }
+    .rise-bundle-item {
+      background: var(--herba-gray); border-radius: 12px; padding: 20px; text-align: center;
+      border: 1px solid rgba(0,166,81,0.15); transition: all 0.3s;
+    }
+    .rise-bundle-item:hover { border-color: var(--herba-green); transform: translateY(-3px); }
+    .rise-bundle-icon { font-size: 32px; margin-bottom: 12px; }
+    .rise-bundle-title { font-size: 13px; font-weight: 600; margin-bottom: 6px; }
+    .rise-bundle-desc { font-size: 11px; color: var(--herba-text-muted); }
+    
+    .rise-details { display: grid; grid-template-columns: repeat(2, 1fr); gap: 20px; margin-bottom: 50px; }
+    .rise-card {
+      background: var(--herba-gray); border-radius: 12px; padding: 24px;
+      border-left: 4px solid var(--tta-orange);
+    }
+    .rise-card.warning { border-left-color: #EF4444; }
+    .rise-card.info { border-left-color: var(--tta-teal); }
+    .rise-card.success { border-left-color: #22C55E; }
+    .rise-card-header { display: flex; align-items: center; gap: 10px; margin-bottom: 12px; }
+    .rise-card-icon { font-size: 20px; }
+    .rise-card-title { font-size: 14px; font-weight: 600; }
+    .rise-card-content { font-size: 12px; color: var(--herba-text-muted); line-height: 1.7; }
+    .rise-card-content strong { color: var(--herba-white); }
+    
+    .rise-verdict {
+      display: grid; grid-template-columns: 1fr 1fr; gap: 24px;
+      background: rgba(0,166,81,0.08); border: 1px solid rgba(0,166,81,0.2);
+      border-radius: 16px; padding: 30px;
+    }
+    .rise-verdict-col h4 {
+      font-size: 13px; font-weight: 600; margin-bottom: 14px; display: flex; align-items: center; gap: 8px;
+    }
+    .rise-verdict-col.pro h4 { color: #22C55E; }
+    .rise-verdict-col.con h4 { color: #EF4444; }
+    .rise-verdict-list { list-style: none; }
+    .rise-verdict-list li {
+      font-size: 12px; color: var(--herba-text-muted); padding: 8px 0;
+      border-bottom: 1px solid rgba(255,255,255,0.05);
+      display: flex; align-items: flex-start; gap: 8px;
+    }
+    .rise-verdict-list li:last-child { border-bottom: none; }
+    .rise-verdict-list .icon { flex-shrink: 0; }
+    
+    @media (max-width: 1100px) {
+      .rise-intro { grid-template-columns: 1fr; }
+      .rise-bundle { grid-template-columns: repeat(2, 1fr); }
+      .rise-details { grid-template-columns: 1fr; }
+      .rise-verdict { grid-template-columns: 1fr; }
+    }
+    @media (max-width: 600px) {
+      .rise-section { padding: 60px 20px; }
+      .rise-bundle { grid-template-columns: 1fr; }
+    }
+
+    /* Journey */
+    .journey-container {
+      background: linear-gradient(135deg, rgba(0, 166, 81, 0.08) 0%, rgba(9, 143, 155, 0.08) 100%);
+      border: 1px solid rgba(0, 166, 81, 0.2);
+      border-radius: 20px;
+      padding: 40px;
+      max-width: 1000px;
+      margin: 0 auto;
+    }
+    .journey-phases {
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      gap: 20px;
+      position: relative;
+    }
+    .journey-phases::before {
+      content: '';
+      position: absolute;
+      top: 40px;
+      left: 10%;
+      right: 10%;
+      height: 4px;
+      background: linear-gradient(90deg, var(--tta-teal), var(--tta-blue), var(--tta-orange), var(--rise-gold));
+      border-radius: 2px;
+      z-index: 0;
+    }
+    .journey-phase {
+      background: var(--herba-gray);
+      border-radius: 16px;
+      padding: 24px;
+      text-align: center;
+      position: relative;
+      z-index: 1;
+      border: 2px solid transparent;
+      transition: all 0.3s ease;
+      cursor: pointer;
+    }
+    .journey-phase:hover { transform: translateY(-5px); }
+    .journey-phase.discover { border-color: var(--tta-teal); }
+    .journey-phase.prepare { border-color: var(--tta-blue); }
+    .journey-phase.realize { border-color: var(--tta-orange); }
+    .journey-phase.run { border-color: var(--rise-gold); }
+    .journey-phase-number {
+      width: 50px;
+      height: 50px;
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-family: 'Space Grotesk', sans-serif;
+      font-size: 24px;
+      font-weight: 700;
+      color: var(--herba-white);
+      margin: 0 auto 16px;
+    }
+    .journey-phase.discover .journey-phase-number { background: var(--tta-teal); }
+    .journey-phase.prepare .journey-phase-number { background: var(--tta-blue); }
+    .journey-phase.realize .journey-phase-number { background: var(--tta-orange); }
+    .journey-phase.run .journey-phase-number { background: var(--rise-gold); }
+    .journey-phase-title {
+      font-family: 'Space Grotesk', sans-serif;
+      font-size: 18px;
+      font-weight: 700;
+      margin-bottom: 8px;
+    }
+    .journey-phase-count { font-size: 12px; color: var(--herba-text-muted); }
+    .journey-phase-status {
+      position: absolute;
+      top: 12px;
+      right: 12px;
+      width: 12px;
+      height: 12px;
+      border-radius: 50%;
+    }
+    .journey-phase-status.completed { background: var(--herba-green); }
+    .journey-phase-status.current { background: var(--tta-orange); animation: pulse 1.5s infinite; }
+    
+    /* Challenges */
+    .challenges-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 24px;
+      margin-bottom: 60px;
+      max-width: 1200px;
+      margin-left: auto;
+      margin-right: auto;
+    }
+    .challenge-card {
+      background: linear-gradient(180deg, var(--herba-gray) 0%, var(--herba-dark) 100%);
+      border: 1px solid rgba(0, 166, 81, 0.2);
+      border-radius: 16px;
+      padding: 28px;
+      transition: all 0.3s ease;
+      position: relative;
+    }
+    .challenge-card::before {
+      content: '';
+      position: absolute;
+      top: 0;
+      left: 0;
+      right: 0;
+      height: 3px;
+      background: linear-gradient(90deg, var(--herba-green), var(--tta-teal));
+    }
+    .challenge-card:hover {
+      transform: translateY(-5px);
+      border-color: var(--herba-green);
+      box-shadow: 0 20px 60px rgba(0, 166, 81, 0.2);
+    }
+    .challenge-icon { font-size: 36px; margin-bottom: 16px; }
+    .challenge-title {
+      font-family: 'Space Grotesk', sans-serif;
+      font-size: 18px;
+      font-weight: 700;
+      margin-bottom: 12px;
+    }
+    .challenge-desc {
+      font-size: 13px;
+      color: var(--herba-text-muted);
+      line-height: 1.6;
+      margin-bottom: 16px;
+    }
+    .challenge-stat {
+      display: inline-block;
+      background: rgba(0, 166, 81, 0.15);
+      color: var(--herba-green);
+      padding: 6px 12px;
+      border-radius: 8px;
+      font-size: 11px;
+      font-weight: 600;
+    }
+    
+    /* Industry Stats */
+    .industry-stats {
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      gap: 20px;
+      background: linear-gradient(135deg, rgba(0, 166, 81, 0.1) 0%, rgba(9, 143, 155, 0.1) 100%);
+      border: 1px solid rgba(0, 166, 81, 0.2);
+      border-radius: 20px;
+      padding: 40px;
+      max-width: 1200px;
+      margin: 0 auto;
+    }
+    .industry-stat { text-align: center; }
+    .industry-stat-value {
+      font-family: 'Space Grotesk', sans-serif;
+      font-size: 48px;
+      font-weight: 700;
+      color: var(--herba-green);
+      line-height: 1;
+      margin-bottom: 8px;
+    }
+    .industry-stat-label { font-size: 13px; margin-bottom: 4px; }
+    .industry-stat-source { font-size: 10px; color: var(--herba-text-muted); }
+    
+    /* Services */
+    .services-container {
+      display: grid;
+      grid-template-columns: 2fr 1fr;
+      gap: 40px;
+    }
+    .phase-group { margin-bottom: 30px; }
+    .phase-header {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+      margin-bottom: 16px;
+      padding-bottom: 12px;
+      border-bottom: 2px solid rgba(0, 166, 81, 0.2);
+    }
+    .phase-number {
+      width: 36px;
+      height: 36px;
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-family: 'Space Grotesk', sans-serif;
+      font-size: 16px;
+      font-weight: 700;
+      color: var(--herba-white);
+    }
+    .phase-number.discover { background: var(--tta-teal); }
+    .phase-number.prepare { background: var(--tta-blue); }
+    .phase-number.realize { background: var(--tta-orange); }
+    .phase-number.run { background: var(--rise-gold); }
+    .phase-title {
+      font-family: 'Space Grotesk', sans-serif;
+      font-size: 20px;
+      font-weight: 700;
+    }
+    .services-grid { display: flex; flex-direction: column; gap: 12px; }
+    .service-card {
+      background: var(--herba-gray);
+      border: 2px solid rgba(0, 166, 81, 0.15);
+      border-radius: 12px;
+      padding: 16px 20px;
+      cursor: pointer;
+      transition: all 0.3s ease;
+      position: relative;
+    }
+    .service-card:hover {
+      border-color: var(--herba-green);
+      transform: translateX(5px);
+    }
+    .service-card.selected {
+      border-color: var(--herba-green);
+      background: rgba(0, 166, 81, 0.1);
+    }
+    .service-card.selected::before {
+      content: '✓';
+      position: absolute;
+      top: 10px;
+      right: 10px;
+      width: 22px;
+      height: 22px;
+      background: var(--herba-green);
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 12px;
+      font-weight: bold;
+    }
+    .service-card-header {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+    }
+    .service-checkbox {
+      width: 20px;
+      height: 20px;
+      border: 2px solid var(--herba-green);
+      border-radius: 5px;
+      flex-shrink: 0;
+      transition: all 0.2s ease;
+    }
+    .service-card.selected .service-checkbox { background: var(--herba-green); }
+    .service-info { flex: 1; }
+    .service-name {
+      font-family: 'Space Grotesk', sans-serif;
+      font-size: 15px;
+      font-weight: 600;
+      margin-bottom: 4px;
+      display: flex;
+      align-items: center;
+      gap: 8px;
+    }
+    .service-name .expand-icon { font-size: 10px; color: var(--herba-text-muted); transition: transform 0.2s; }
+    .service-card.expanded .expand-icon { transform: rotate(90deg); }
+    .service-card.expanded { background: var(--herba-gray-light); }
+    
+    .service-details {
+      display: none;
+      margin-top: 16px;
+      padding-top: 16px;
+      border-top: 1px solid rgba(0,166,81,0.15);
+    }
+    .service-card.expanded .service-details { display: block; }
+    
+    /* Neue vollständige Service-Cards */
+    .service-card-full {
+      background: var(--herba-gray);
+      border: 2px solid rgba(0, 166, 81, 0.15);
+      border-radius: 16px;
+      padding: 24px;
+      margin-bottom: 16px;
+      cursor: pointer;
+      transition: all 0.3s ease;
+      position: relative;
+    }
+    .service-card-full:hover {
+      border-color: var(--herba-green);
+      transform: translateX(5px);
+    }
+    .service-card-full.selected {
+      border-color: var(--herba-green);
+      background: rgba(0, 166, 81, 0.1);
+    }
+    .service-card-full.highlighted {
+      border-color: var(--tta-orange);
+      background: rgba(218, 85, 0, 0.08);
+    }
+    .service-card-full.selected::before {
+      content: '✓ Ausgewählt';
+      position: absolute;
+      top: 12px;
+      right: 12px;
+      background: var(--herba-green);
+      color: white;
+      padding: 4px 12px;
+      border-radius: 20px;
+      font-size: 11px;
+      font-weight: 600;
+    }
+    .service-card-top {
+      display: flex;
+      align-items: flex-start;
+      gap: 16px;
+      margin-bottom: 16px;
+    }
+    .service-card-full .service-checkbox {
+      width: 24px;
+      height: 24px;
+      border: 2px solid var(--herba-green);
+      border-radius: 6px;
+      flex-shrink: 0;
+      margin-top: 2px;
+      transition: all 0.2s ease;
+    }
+    .service-card-full.selected .service-checkbox {
+      background: var(--herba-green);
+    }
+    .service-header-info { flex: 1; }
+    .service-card-full .service-name {
+      font-family: 'Space Grotesk', sans-serif;
+      font-size: 18px;
+      font-weight: 600;
+      margin-bottom: 8px;
+      color: var(--herba-white);
+    }
+    .service-card-full .service-meta {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+      flex-wrap: wrap;
+    }
+    .service-card-full .service-days {
+      background: var(--herba-dark);
+      padding: 4px 12px;
+      border-radius: 6px;
+      font-size: 12px;
+      font-weight: 600;
+      color: var(--herba-green);
+    }
+    .service-card-full .service-cost {
+      font-size: 12px;
+      color: var(--herba-text-muted);
+    }
+    .service-card-full .service-priority {
+      background: var(--tta-orange);
+      color: white;
+      padding: 4px 10px;
+      border-radius: 4px;
+      font-size: 10px;
+      font-weight: 700;
+      text-transform: uppercase;
+    }
+    .service-card-full .service-priority:contains("Kritisch") {
+      background: #EF4444;
+    }
+    
+    .service-card-full .service-description {
+      font-size: 14px;
+      color: var(--herba-text-muted);
+      line-height: 1.8;
+      margin-bottom: 16px;
+      padding-left: 40px;
+    }
+    
+    .service-card-full .service-benefit {
+      display: flex;
+      gap: 12px;
+      background: rgba(0, 166, 81, 0.1);
+      border-radius: 10px;
+      padding: 16px;
+      margin-bottom: 16px;
+      margin-left: 40px;
+    }
+    .service-card-full .service-benefit.warning {
+      background: rgba(239, 68, 68, 0.1);
+    }
+    .service-card-full .benefit-icon {
+      font-size: 20px;
+      flex-shrink: 0;
+    }
+    .service-card-full .benefit-content {
+      font-size: 13px;
+      color: var(--herba-white);
+      line-height: 1.7;
+    }
+    .service-card-full .benefit-content strong {
+      color: var(--herba-green);
+    }
+    .service-card-full .service-benefit.warning .benefit-content strong {
+      color: #EF4444;
+    }
+    
+    .service-card-full .service-deliverables {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 8px;
+      padding-left: 40px;
+    }
+    .service-card-full .deliverable {
+      background: var(--herba-dark);
+      border: 1px solid rgba(0, 166, 81, 0.2);
+      padding: 6px 12px;
+      border-radius: 6px;
+      font-size: 11px;
+      color: var(--herba-text-muted);
+    }
+    
+    .phase-group .phase-budget {
+      font-size: 12px;
+      color: var(--herba-text-muted);
+      margin-left: auto;
+    }
+    
+    @media (max-width: 900px) {
+      .service-card-full .service-description,
+      .service-card-full .service-benefit,
+      .service-card-full .service-deliverables {
+        padding-left: 0;
+        margin-left: 0;
+      }
+    }
+    
+    .service-description {
+      font-size: 13px;
+      color: var(--herba-text-muted);
+      line-height: 1.7;
+      margin-bottom: 16px;
+    }
+    
+    .service-benefit {
+      background: rgba(0,166,81,0.1);
+      border-radius: 8px;
+      padding: 14px;
+      margin-bottom: 16px;
+    }
+    .service-benefit-label {
+      font-size: 10px;
+      font-weight: 700;
+      color: var(--herba-green);
+      text-transform: uppercase;
+      letter-spacing: 1px;
+      margin-bottom: 6px;
+    }
+    .service-benefit-text {
+      font-size: 12px;
+      color: var(--herba-white);
+      line-height: 1.6;
+    }
+    
+    .service-deliverables { display: flex; flex-wrap: wrap; gap: 8px; }
+    .service-deliverable {
+      background: var(--herba-dark);
+      border: 1px solid rgba(0,166,81,0.2);
+      padding: 6px 12px;
+      border-radius: 6px;
+      font-size: 11px;
+      color: var(--herba-text-muted);
+    }
+    
+    .service-meta {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      font-size: 11px;
+    }
+    .service-phase {
+      padding: 2px 8px;
+      border-radius: 4px;
+      font-size: 9px;
+      font-weight: 600;
+      text-transform: uppercase;
+    }
+    .service-phase.discover { background: rgba(9, 143, 155, 0.2); color: var(--tta-teal); }
+    .service-phase.prepare { background: rgba(32, 94, 167, 0.2); color: var(--tta-blue); }
+    .service-phase.realize { background: rgba(218, 85, 0, 0.2); color: var(--tta-orange); }
+    .service-phase.run { background: rgba(232, 185, 35, 0.2); color: var(--rise-gold); }
+    .service-days { color: var(--herba-text-muted); }
+    .service-priority {
+      background: var(--tta-orange);
+      color: white;
+      padding: 2px 6px;
+      border-radius: 4px;
+      font-size: 8px;
+      font-weight: 700;
+      text-transform: uppercase;
+    }
+    
+    /* Calc Panel */
+    .calc-panel {
+      background: var(--herba-gray);
+      border: 1px solid rgba(0, 166, 81, 0.2);
+      border-radius: 16px;
+      padding: 24px;
+      position: sticky;
+      top: 80px;
+      max-height: calc(100vh - 100px);
+      overflow-y: auto;
+    }
+    .calc-header {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      margin-bottom: 20px;
+      padding-bottom: 16px;
+      border-bottom: 1px solid rgba(0, 166, 81, 0.2);
+    }
+    .calc-title {
+      font-family: 'Space Grotesk', sans-serif;
+      font-size: 18px;
+      font-weight: 700;
+    }
+    .calc-reset {
+      background: transparent;
+      border: 1px solid var(--herba-text-muted);
+      color: var(--herba-text-muted);
+      padding: 6px 12px;
+      border-radius: 6px;
+      font-size: 11px;
+      cursor: pointer;
+      transition: all 0.2s ease;
+    }
+    .calc-reset:hover { border-color: var(--tta-orange); color: var(--tta-orange); }
+    .calc-empty {
+      text-align: center;
+      padding: 30px 20px;
+      color: var(--herba-text-muted);
+      font-size: 13px;
+    }
+    .calc-empty-icon { font-size: 40px; margin-bottom: 12px; opacity: 0.5; }
+    .calc-items { display: flex; flex-direction: column; gap: 8px; margin-bottom: 20px; }
+    .calc-item {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      padding: 10px 12px;
+      background: rgba(0, 166, 81, 0.05);
+      border-radius: 8px;
+      border-left: 3px solid var(--herba-green);
+    }
+    .calc-item-name { font-size: 12px; font-weight: 500; flex: 1; }
+    .calc-item-days { font-size: 12px; color: var(--herba-green); font-weight: 600; margin-left: 10px; }
+    .calc-item-remove {
+      background: transparent;
+      border: none;
+      color: var(--herba-text-muted);
+      cursor: pointer;
+      padding: 2px 6px;
+      font-size: 14px;
+    }
+    .calc-item-remove:hover { color: var(--tta-orange); }
+    .calc-summary {
+      background: linear-gradient(135deg, rgba(0, 166, 81, 0.15) 0%, rgba(9, 143, 155, 0.15) 100%);
+      border-radius: 12px;
+      padding: 16px;
+    }
+    .calc-row {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding: 6px 0;
+      font-size: 13px;
+    }
+    .calc-row.total {
+      border-top: 2px solid rgba(0, 166, 81, 0.3);
+      margin-top: 10px;
+      padding-top: 12px;
+      font-size: 16px;
+      font-weight: 700;
+    }
+    .calc-row.total .calc-value {
+      color: var(--herba-green);
+      font-family: 'Space Grotesk', sans-serif;
+      font-size: 22px;
+    }
+    .calc-label { color: var(--herba-text-muted); }
+    .calc-value { font-weight: 600; }
+    .calc-note {
+      margin-top: 12px;
+      padding: 10px;
+      background: rgba(218, 85, 0, 0.1);
+      border-radius: 8px;
+      font-size: 10px;
+      color: var(--herba-text-muted);
+      text-align: center;
+    }
+    .calc-button {
+      width: 100%;
+      background: linear-gradient(135deg, var(--herba-green) 0%, var(--herba-green-dark) 100%);
+      color: var(--herba-white);
+      border: none;
+      padding: 14px 20px;
+      border-radius: 10px;
+      font-size: 13px;
+      font-weight: 700;
+      cursor: pointer;
+      margin-top: 16px;
+      transition: all 0.3s ease;
+    }
+    .calc-button:hover {
+      transform: translateY(-2px);
+      box-shadow: 0 10px 30px rgba(0, 166, 81, 0.3);
+    }
+    
+    /* Fragenkatalog */
+    .fragen-container { display: flex; flex-direction: column; gap: 12px; max-width: 1000px; margin: 0 auto; }
+    .fragen-gruppe {
+      background: var(--herba-gray);
+      border: 1px solid rgba(0, 166, 81, 0.2);
+      border-radius: 12px;
+      overflow: hidden;
+    }
+    .fragen-header {
+      display: flex;
+      align-items: center;
+      gap: 16px;
+      padding: 16px 20px;
+      cursor: pointer;
+      transition: all 0.3s ease;
+      background: linear-gradient(135deg, rgba(0, 166, 81, 0.05) 0%, transparent 100%);
+    }
+    .fragen-header:hover { background: linear-gradient(135deg, rgba(0, 166, 81, 0.1) 0%, transparent 100%); }
+    .fragen-nummer {
+      width: 36px;
+      height: 36px;
+      background: var(--herba-green);
+      border-radius: 8px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-family: 'Space Grotesk', sans-serif;
+      font-size: 16px;
+      font-weight: 700;
+      flex-shrink: 0;
+    }
+    .fragen-titel {
+      flex: 1;
+      font-family: 'Space Grotesk', sans-serif;
+      font-size: 15px;
+      font-weight: 600;
+    }
+    .fragen-count {
+      font-size: 11px;
+      color: var(--herba-text-muted);
+      background: rgba(0, 166, 81, 0.1);
+      padding: 4px 10px;
+      border-radius: 20px;
+    }
+    .fragen-toggle {
+      width: 28px;
+      height: 28px;
+      border-radius: 50%;
+      background: rgba(0, 166, 81, 0.2);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 18px;
+      color: var(--herba-green);
+      transition: all 0.3s ease;
+    }
+    .fragen-gruppe.open .fragen-toggle {
+      transform: rotate(45deg);
+      background: var(--herba-green);
+      color: var(--herba-white);
+    }
+    .fragen-content {
+      display: none;
+      padding: 0 20px 20px;
+      border-top: 1px solid rgba(0, 166, 81, 0.1);
+    }
+    .fragen-gruppe.open .fragen-content { display: block; }
+    .frage-item {
+      padding: 16px 0;
+      border-bottom: 1px solid rgba(0, 166, 81, 0.1);
+    }
+    .frage-item:last-child { border-bottom: none; }
+    .frage-nr {
+      display: inline-block;
+      background: rgba(0, 166, 81, 0.15);
+      color: var(--herba-green);
+      padding: 2px 8px;
+      border-radius: 4px;
+      font-size: 11px;
+      font-weight: 600;
+      margin-bottom: 6px;
+    }
+    .frage-text {
+      font-size: 13px;
+      margin-bottom: 10px;
+      line-height: 1.5;
+    }
+    .frage-antwort {
+      width: 100%;
+      min-height: 70px;
+      background: var(--herba-dark);
+      border: 1px solid rgba(0, 166, 81, 0.2);
+      border-radius: 8px;
+      padding: 10px;
+      color: var(--herba-white);
+      font-family: 'Poppins', sans-serif;
+      font-size: 12px;
+      resize: vertical;
+    }
+    .frage-antwort:focus { outline: none; border-color: var(--herba-green); }
+    .frage-antwort::placeholder { color: var(--herba-text-muted); }
+    .fragen-actions {
+      display: flex;
+      gap: 16px;
+      justify-content: center;
+      margin-top: 40px;
+    }
+    .fragen-export-btn, .fragen-email-btn {
+      background: var(--herba-green);
+      color: var(--herba-white);
+      border: none;
+      padding: 14px 28px;
+      border-radius: 10px;
+      font-size: 13px;
+      font-weight: 600;
+      cursor: pointer;
+      transition: all 0.3s ease;
+    }
+    .fragen-export-btn:hover, .fragen-email-btn:hover {
+      transform: translateY(-2px);
+      box-shadow: 0 10px 30px rgba(0, 166, 81, 0.3);
+    }
+    .fragen-email-btn { background: var(--tta-orange); }
+    
+    /* Why TIMETOACT */
+    .why-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 24px;
+      max-width: 1200px;
+      margin: 0 auto;
+    }
+    .why-card {
+      background: linear-gradient(180deg, var(--herba-gray) 0%, var(--herba-dark) 100%);
+      border: 1px solid rgba(0, 166, 81, 0.15);
+      border-radius: 16px;
+      padding: 28px;
+      text-align: center;
+      transition: all 0.3s ease;
+    }
+    .why-card:hover {
+      transform: translateY(-5px);
+      border-color: var(--herba-green);
+    }
+    .why-icon {
+      width: 56px;
+      height: 56px;
+      background: linear-gradient(135deg, var(--herba-green), var(--tta-teal));
+      border-radius: 14px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 26px;
+      margin: 0 auto 16px;
+    }
+    .why-title {
+      font-family: 'Space Grotesk', sans-serif;
+      font-size: 17px;
+      font-weight: 700;
+      margin-bottom: 10px;
+    }
+    .why-desc {
+      font-size: 13px;
+      color: var(--herba-text-muted);
+      line-height: 1.6;
+    }
+    
+    /* CTA */
+    .cta-section {
+      background: linear-gradient(135deg, var(--herba-green) 0%, var(--herba-green-dark) 100%);
+      padding: 80px 60px;
+      text-align: center;
+      position: relative;
+    }
+    .cta-section::before {
+      content: '';
+      position: absolute;
+      top: 0; left: 0; right: 0; bottom: 0;
+      background: url("data:image/svg+xml,%3Csvg width='60' height='60' viewBox='0 0 60 60' xmlns='http://www.w3.org/2000/svg'%3E%3Cg fill='none'%3E%3Cg fill='%23ffffff' fill-opacity='0.05'%3E%3Cpath d='M36 34v-4h-2v4h-4v2h4v4h2v-4h4v-2h-4zm0-30V0h-2v4h-4v2h4v4h2V6h4V4h-4zM6 34v-4H4v4H0v2h4v4h2v-4h4v-2H6zM6 4V0H4v4H0v2h4v4h2V6h4V4H6z'/%3E%3C/g%3E%3C/g%3E%3C/svg%3E");
+    }
+    .cta-content { position: relative; z-index: 1; max-width: 700px; margin: 0 auto; }
+    .cta-title {
+      font-family: 'Space Grotesk', sans-serif;
+      font-size: 38px;
+      font-weight: 700;
+      margin-bottom: 16px;
+    }
+    .cta-desc { font-size: 16px; color: rgba(255, 255, 255, 0.9); margin-bottom: 32px; }
+    .cta-button {
+      display: inline-flex;
+      align-items: center;
+      gap: 10px;
+      background: var(--herba-white);
+      color: var(--herba-green-dark);
+      padding: 16px 36px;
+      border-radius: 50px;
+      font-size: 15px;
+      font-weight: 700;
+      text-decoration: none;
+      transition: all 0.3s ease;
+      border: none;
+      cursor: pointer;
+    }
+    .cta-button:hover {
+      transform: translateY(-3px);
+      box-shadow: 0 15px 40px rgba(0, 0, 0, 0.3);
+    }
+    
+    /* Footer */
+    .footer {
+      background: var(--herba-dark);
+      padding: 40px 60px;
+      text-align: center;
+      border-top: 1px solid rgba(0, 166, 81, 0.2);
+    }
+    .footer-logos {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      gap: 40px;
+      margin-bottom: 20px;
+    }
+    .footer-tagline {
+      font-size: 14px;
+      color: var(--herba-text-muted);
+      margin-bottom: 12px;
+    }
+    .footer-tagline span { color: var(--tta-orange); font-weight: 600; }
+    .footer-copy { font-size: 11px; color: var(--herba-text-muted); }
+    
+    /* Responsive */
+    @media (max-width: 1200px) {
+      .header-content { grid-template-columns: 1fr; gap: 40px; }
+      .services-container { grid-template-columns: 1fr; }
+      .calc-panel { position: relative; top: 0; margin-top: 40px; }
+      .challenges-grid { grid-template-columns: repeat(2, 1fr); }
+      .industry-stats { grid-template-columns: repeat(2, 1fr); }
+      .why-grid { grid-template-columns: repeat(2, 1fr); }
+      .journey-phases { grid-template-columns: repeat(2, 1fr); }
+      .journey-phases::before { display: none; }
+    }
+    @media (max-width: 768px) {
+      .header { padding: 100px 20px 40px; }
+      .section { padding: 60px 20px; }
+      .nav-bar { padding: 10px 20px; }
+      .nav-links { display: none; }
+      .header-title h1 { font-size: 32px; }
+      .section-title { font-size: 28px; }
+      .challenges-grid { grid-template-columns: 1fr; }
+      .why-grid { grid-template-columns: 1fr; }
+      .stats-grid { grid-template-columns: 1fr; }
+      .dual-logos { flex-direction: column; gap: 20px; }
+      .logo-divider { width: 50px; height: 2px; }
+      .cta-section { padding: 60px 20px; }
+      .cta-title { font-size: 26px; }
+      .fragen-actions { flex-direction: column; }
+    }
+
+    .journey-phases.six-phases {
+      grid-template-columns: repeat(6, 1fr);
+    }
+    .journey-phases.six-phases::before {
+      background: linear-gradient(90deg, var(--tta-teal), var(--tta-blue), #8B5CF6, var(--tta-orange), #EC4899, var(--rise-gold));
+    }
+    .journey-phase.explore { border-color: #8B5CF6; }
+    .journey-phase.explore .journey-phase-number { background: #8B5CF6; }
+    .journey-phase.deploy { border-color: #EC4899; }
+    .journey-phase.deploy .journey-phase-number { background: #EC4899; }
+    .phase-number.explore { background: #8B5CF6; }
+    .phase-number.deploy { background: #EC4899; }
+    .service-phase.explore { background: rgba(139, 92, 246, 0.2); color: #8B5CF6; }
+    .service-phase.deploy { background: rgba(236, 72, 153, 0.2); color: #EC4899; }
+    @media (max-width: 1200px) {
+      .journey-phases.six-phases { grid-template-columns: repeat(3, 1fr); }
+    }
+    @media (max-width: 768px) {
+      .journey-phases.six-phases { grid-template-columns: repeat(2, 1fr); }
+    }
+  </style>
+</head>
+<body>
+  <div class="herba-brandbar"><span></span><span></span><span></span></div>
+  
+  <nav class="nav-bar">
+    <div class="nav-logo">
+      <img src="data:image/png;base64,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" alt="Herba Chemosan" style="height: 30px;">
+      <img src="data:image/png;base64,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" alt="TIMETOACT" style="height: 26px;">
+    </div>
+    <div class="nav-links">
+      <a href="#rise-info" class="nav-link">Was ist RISE?</a>
+      <a href="#journey" class="nav-link">Journey</a>
+      <a href="#challenges" class="nav-link">Herausforderungen</a>
+      <a href="#services" class="nav-link">Services</a>
+      <a href="#fragenkatalog" class="nav-link">Fragenkatalog</a>
+      <a href="#why" class="nav-link">Warum TIMETOACT</a>
+    </div>
+  </nav>
+  
+  <header class="header">
+    <div class="header-content">
+      <div class="logo-area">
+        <div class="dual-logos">
+          <img src="data:image/png;base64,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" alt="Herba Chemosan" style="height: 55px;">
+          <div class="logo-divider"></div>
+          <img src="data:image/png;base64,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" alt="TIMETOACT GROUP" style="height: 45px;">
+        </div>
+        <div class="header-title">
+          <div class="header-tag">RISE with SAP Leuchtturmprojekt</div>
+          <h1><span>RISE</span> Journey<br>Advisory Services</h1>
+          <p>Unabhängige Begleitung Ihrer SAP S/4HANA Cloud Transformation - von der Strategie bis zum Hypercare.</p>
+        </div>
+      </div>
+      <div class="company-stats">
+        <div class="company-stats-header">
+          <div class="company-stats-title">Herba Chemosan auf einen Blick</div>
+          <div class="deal-badge">RISE Deal aktiv</div>
+        </div>
+        <div class="stats-grid">
+          <div class="stat-item"><div class="stat-value">~45%</div><div class="stat-label">Marktanteil AT*</div></div>
+          <div class="stat-item"><div class="stat-value">~1.000</div><div class="stat-label">Mitarbeiter*</div></div>
+          <div class="stat-item"><div class="stat-value">~1,5 Mrd</div><div class="stat-label">Umsatz EUR*</div></div>
+          <div class="stat-item"><div class="stat-value">7</div><div class="stat-label">Logistikzentren*</div></div>
+        </div>
+        <div style="font-size: 10px; color: var(--herba-text-muted); margin-top: 12px; text-align: center; opacity: 0.7;">* Öffentliche Quellen / Managementangaben – zur Validierung vorgesehen</div>
+      </div>
+    </div>
+  </header>
+  
+  <!-- RISE Explainer Section -->
+  <section class="rise-section" id="rise-info">
+    <div class="rise-container">
+      <div class="section-header">
+        <div class="section-tag" style="background: var(--rise-gold);">Was ist RISE?</div>
+        <h2 class="section-title">RISE with SAP <span>erklärt</span></h2>
+        <p class="section-description">Business Transformation as a Service – SAP bündelt alles in einem Vertrag.</p>
+      </div>
+      
+      <div class="rise-intro">
+        <div class="rise-analogy">
+          <div class="rise-analogy-icon">🚗</div>
+          <h3>Das Leasing-Modell für ERP</h3>
+          <p>
+            Stellen Sie sich vor, Sie <span class="highlight">leasen ein Auto als Rundum-Sorglos-Paket</span> 
+            (Auto, Versicherung, Werkstatt, Reifenwechsel, Steuer) anstatt es zu kaufen und sich selbst um alles zu kümmern.
+          </p>
+          <p style="margin-top: 12px;">
+            <span class="highlight">RISE with SAP</span> ist genau dieses Modell für Ihre ERP-Landschaft. 
+            SAP wird zum alleinigen Vertragspartner für Software, Infrastruktur und Betrieb.
+          </p>
+        </div>
+        
+        <div>
+          <h4 style="font-size: 12px; color: var(--herba-green); margin-bottom: 16px; text-transform: uppercase; letter-spacing: 1px;">Früher (On-Premise) vs. RISE</h4>
+          <div style="display: grid; gap: 10px;">
+            <div style="background: var(--herba-gray); padding: 14px; border-radius: 8px; border-left: 3px solid #EF4444;">
+              <div style="font-size: 10px; color: #EF4444; margin-bottom: 4px;">FRÜHER</div>
+              <div style="font-size: 12px; color: var(--herba-text-muted);">Lizenzen kaufen + Hardware mieten + Basis-Betrieb beauftragen = 3+ Verträge</div>
+            </div>
+            <div style="background: var(--herba-gray); padding: 14px; border-radius: 8px; border-left: 3px solid #22C55E;">
+              <div style="font-size: 10px; color: #22C55E; margin-bottom: 4px;">MIT RISE</div>
+              <div style="font-size: 12px; color: var(--herba-text-muted);">Alles in einem Vertrag mit monatlicher Abo-Gebühr = 1 Ansprechpartner</div>
+            </div>
+          </div>
+        </div>
+      </div>
+      
+      <h4 style="font-size: 12px; color: var(--herba-green); margin-bottom: 16px; text-transform: uppercase; letter-spacing: 1px; text-align: center;">Was ist im RISE Bundle enthalten?</h4>
+      <div class="rise-bundle">
+        <div class="rise-bundle-item">
+          <div class="rise-bundle-icon">💿</div>
+          <div class="rise-bundle-title">S/4HANA Cloud</div>
+          <div class="rise-bundle-desc">Software (meist Private Edition)</div>
+        </div>
+        <div class="rise-bundle-item">
+          <div class="rise-bundle-icon">☁️</div>
+          <div class="rise-bundle-title">Infrastruktur (IaaS)</div>
+          <div class="rise-bundle-desc">AWS, Azure oder GCP im Hintergrund</div>
+        </div>
+        <div class="rise-bundle-item">
+          <div class="rise-bundle-icon">🔧</div>
+          <div class="rise-bundle-title">Managed Services</div>
+          <div class="rise-bundle-desc">Backups, Updates, Patching</div>
+        </div>
+        <div class="rise-bundle-item">
+          <div class="rise-bundle-icon">🧰</div>
+          <div class="rise-bundle-title">Tools & Credits</div>
+          <div class="rise-bundle-desc">BTP, Signavio, Business Network</div>
+        </div>
+      </div>
+      
+      <h4 style="font-size: 12px; color: var(--tta-orange); margin-bottom: 16px; text-transform: uppercase; letter-spacing: 1px; text-align: center;">Das Kleingedruckte – Worauf Sie achten müssen</h4>
+      <div class="rise-details">
+        <div class="rise-card info">
+          <div class="rise-card-header">
+            <div class="rise-card-icon">📝</div>
+            <div class="rise-card-title">One Contract = Ein Hals</div>
+          </div>
+          <div class="rise-card-content">
+            <strong>Vorteil:</strong> Kein Finger-Pointing mehr zwischen Hoster und Software-Hersteller.<br><br>
+            <strong>Konsequenz:</strong> Sie verlieren direkte Kontrolle über die Infrastruktur. Kein schneller Server-Neustart mehr – alles läuft über SAP-Tickets.
+          </div>
+        </div>
+        
+        <div class="rise-card warning">
+          <div class="rise-card-header">
+            <div class="rise-card-icon">👥</div>
+            <div class="rise-card-title">FUE Lizenzmodell</div>
+          </div>
+          <div class="rise-card-content">
+            <strong>Full Usage Equivalent</strong> – eine Art Währung statt Named User.<br><br>
+            <strong>Beispiel:</strong> 1 FUE = 1 Advanced User ODER 5 Core User<br><br>
+            <strong>Hinweis:</strong> Sie mieten diese Nutzungsrechte. Ein klares Verständnis der Vertragslaufzeiten und Exit-Optionen ist wichtig.
+          </div>
+        </div>
+        
+        <div class="rise-card warning">
+          <div class="rise-card-header">
+            <div class="rise-card-icon">⚠️</div>
+            <div class="rise-card-title">SLA & Verantwortung</div>
+          </div>
+          <div class="rise-card-content">
+            <strong>SAP liefert:</strong> Technische Verfügbarkeit (99,7%), Backups, Upgrades.<br><br>
+            <strong>Sie brauchen weiterhin:</strong> Einen Partner für funktionales Application Management (AMS). Wenn ein Z-Report nicht läuft, ist das nicht SAPs Problem!<br><br>
+            <strong>Hinweis:</strong> SAP koordiniert Wartungsfenster und Upgrade-Zeitpunkte – klare SLA-Vereinbarungen sind wichtig.
+          </div>
+        </div>
+        
+        <div class="rise-card warning">
+          <div class="rise-card-header">
+            <div class="rise-card-icon">🔒</div>
+            <div class="rise-card-title">Vendor Lock-in</div>
+          </div>
+          <div class="rise-card-content">
+            Sie können <strong>nicht einfach den Hoster wechseln</strong>, wenn Ihnen die Performance nicht gefällt. Sie sind im SAP-Ökosystem "gefangen".<br><br>
+            Ein Ausstieg aus RISE zurück zu On-Premise ist technisch und vertraglich <strong>anspruchsvoll</strong>.
+          </div>
+        </div>
+      </div>
+      
+      <div class="rise-verdict">
+        <div class="rise-verdict-col pro">
+          <h4>✅ RISE ist sinnvoll, wenn...</h4>
+          <ul class="rise-verdict-list">
+            <li><span class="icon">→</span> Sie keine eigene IT-Infrastruktur-Abteilung betreiben wollen ("Cloud First")</li>
+            <li><span class="icon">→</span> Sie von CapEx (Investition) zu OpEx (Betriebsausgaben) wechseln wollen</li>
+            <li><span class="icon">→</span> Sie Verantwortung für technische Sicherheit und Patching abgeben wollen</li>
+            <li><span class="icon">→</span> Sie einen einzigen Ansprechpartner für die gesamte Infrastruktur bevorzugen</li>
+          </ul>
+        </div>
+        <div class="rise-verdict-col con">
+          <h4>⚠️ Achtung bei der Verhandlung</h4>
+          <ul class="rise-verdict-list">
+            <li><span class="icon">→</span> <strong>System-Tiers:</strong> Memory Extensions bei wachsender Datenbank können teuer werden</li>
+            <li><span class="icon">→</span> <strong>Disaster Recovery SLAs:</strong> Standard oft weniger streng als gewohnt</li>
+            <li><span class="icon">→</span> <strong>Shelf-Ware:</strong> Alte ungenutzte Lizenzen verlieren beim Wechsel oft ihren Wert</li>
+            <li><span class="icon">→</span> <strong>Contract Conversion:</strong> SAP verhandelt Rabatte oft neu – nicht immer zum Vorteil des Kunden</li>
+          </ul>
+        </div>
+      </div>
+    </div>
+  </section>
+  
+  <!-- Journey Section -->
+  <section class="section" id="journey">
+    <div class="section-header">
+      <div class="section-tag">SAP Activate</div>
+      <h2 class="section-title">Die <span>RISE Journey</span></h2>
+      <p class="section-description">Unsere Advisory Services begleiten Sie durch alle 6 Phasen der SAP Activate Methodik.</p>
+    </div>
+    <div class="journey-container">
+      <div class="journey-phases six-phases">
+        <div class="journey-phase discover" onclick="scrollToPhase('discover')">
+          <div class="journey-phase-status completed"></div>
+          <div class="journey-phase-number">1</div>
+          <div class="journey-phase-title">Discover</div>
+          <div class="journey-phase-count">4 Services</div>
+        </div>
+        <div class="journey-phase prepare" onclick="scrollToPhase('prepare')">
+          <div class="journey-phase-status current"></div>
+          <div class="journey-phase-number">2</div>
+          <div class="journey-phase-title">Prepare</div>
+          <div class="journey-phase-count">4 Services</div>
+        </div>
+        <div class="journey-phase explore" onclick="scrollToPhase('explore')">
+          <div class="journey-phase-number">3</div>
+          <div class="journey-phase-title">Explore</div>
+          <div class="journey-phase-count">4 Services</div>
+        </div>
+        <div class="journey-phase realize" onclick="scrollToPhase('realize')">
+          <div class="journey-phase-number">4</div>
+          <div class="journey-phase-title">Realize</div>
+          <div class="journey-phase-count">4 Services</div>
+        </div>
+        <div class="journey-phase deploy" onclick="scrollToPhase('deploy')">
+          <div class="journey-phase-number">5</div>
+          <div class="journey-phase-title">Deploy</div>
+          <div class="journey-phase-count">3 Services</div>
+        </div>
+        <div class="journey-phase run" onclick="scrollToPhase('run')">
+          <div class="journey-phase-number">6</div>
+          <div class="journey-phase-title">Run</div>
+          <div class="journey-phase-count">3 Services</div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Challenges Section -->
+  <section class="section full-width" style="background: var(--herba-dark);" id="challenges">
+    <div class="section-header">
+      <div class="section-tag">Herausforderungen</div>
+      <h2 class="section-title">Herba Chemosan <span>Spezifika</span></h2>
+      <p class="section-description">Als Pharmagroßhändler und Teil der kritischen Infrastruktur gelten besondere Anforderungen.</p>
+    </div>
+    <div class="challenges-grid">
+      <div class="challenge-card">
+        <div class="challenge-icon">💊</div>
+        <div class="challenge-title">Pharma-Compliance</div>
+        <div class="challenge-desc">AMBO, GDP, FMD - strenge regulatorische Anforderungen an Prozesse und Dokumentation.</div>
+        <div class="challenge-stat">Kritische Infrastruktur</div>
+      </div>
+      <div class="challenge-card">
+        <div class="challenge-icon">🏭</div>
+        <div class="challenge-title">KNAPP Logistik</div>
+        <div class="challenge-desc">Hochautomatisiertes Lager mit OSR Shuttle, Itemizer und Pick-it-Easy Integration.</div>
+        <div class="challenge-stat">110.000 Picks/Tag</div>
+      </div>
+      <div class="challenge-card">
+        <div class="challenge-icon">🔗</div>
+        <div class="challenge-title">Legacy Host</div>
+        <div class="challenge-desc">Dezentrales WMS-Szenario mit SAP PI/PO Middleware seit 2009.</div>
+        <div class="challenge-stat">Erster Pharma-SAP weltweit</div>
+      </div>
+      <div class="challenge-card">
+        <div class="challenge-icon">🚚</div>
+        <div class="challenge-title">24h Betrieb</div>
+        <div class="challenge-desc">Notdienst und 90-Minuten-Liefergarantie erfordern hochverfügbare Migrationsszenarien.</div>
+        <div class="challenge-stat">90 Min. Lieferzeit</div>
+      </div>
+      <div class="challenge-card">
+        <div class="challenge-icon">📦</div>
+        <div class="challenge-title">Serialisierung</div>
+        <div class="challenge-desc">FMD Track-and-Trace, Chargenverfolgung und Rückrufprozesse.</div>
+        <div class="challenge-stat">100 Mio. Packungen/Jahr</div>
+      </div>
+      <div class="challenge-card">
+        <div class="challenge-icon">❄️</div>
+        <div class="challenge-title">Kühlkette</div>
+        <div class="challenge-desc">Temperaturgeführte Logistik für sensible Medikamente mit lückenloser Dokumentation.</div>
+        <div class="challenge-stat">GDP-konform</div>
+      </div>
+    </div>
+    <div class="industry-stats">
+      <div class="industry-stat">
+        <div class="industry-stat-value">70%</div>
+        <div class="industry-stat-label">ERP-Projekte verfehlen Business Case</div>
+        <div class="industry-stat-source">Gartner 2024</div>
+      </div>
+      <div class="industry-stat">
+        <div class="industry-stat-value">55%</div>
+        <div class="industry-stat-label">Budget-Überschreitung</div>
+        <div class="industry-stat-source">Industry Studies</div>
+      </div>
+      <div class="industry-stat">
+        <div class="industry-stat-value">47%</div>
+        <div class="industry-stat-label">Termin-Überschreitung</div>
+        <div class="industry-stat-source">Industry Studies</div>
+      </div>
+      <div class="industry-stat">
+        <div class="industry-stat-value">7x</div>
+        <div class="industry-stat-label">Erfolgsrate mit Change Mgmt</div>
+        <div class="industry-stat-source">Prosci Research</div>
+      </div>
+    </div>
+  </section>
+  
+  <!-- Services Section -->
+  <section class="section" id="services">
+    <div class="section-header">
+      <div class="section-tag">Service-Portfolio</div>
+      <h2 class="section-title">Unsere <span>Advisory Services</span></h2>
+      <p class="section-description">Detaillierte Übersicht aller Services mit Beschreibung, Mehrwert und Liefergegenständen.</p>
+    </div>
+    
+    <div class="services-container">
+      <div class="services-list">
+        
+        <!-- ==================== DISCOVER ==================== -->
+        <div class="phase-group" id="phase-discover">
+          <div class="phase-header">
+            <div class="phase-number discover">1</div>
+            <div class="phase-title">Discover</div>
+            <div class="phase-budget">5% Richtwert</div>
+          </div>
+          
+          <div class="service-card-full" data-service="strategy" data-days="3" onclick="toggleService(this)">
+            <div class="service-card-top">
+              <div class="service-checkbox"></div>
+              <div class="service-header-info">
+                <div class="service-name">RISE Strategie Workshop</div>
+                <div class="service-meta">
+                  <span class="service-days">3 PT</span>
+                  <span class="service-cost">5.400 €</span>
+                  <span class="service-priority">Empfohlen</span>
+                </div>
+              </div>
+            </div>
+            <div class="service-description">
+              Gemeinsame Definition der Transformationsziele, Scope-Festlegung und Roadmap-Entwicklung. 
+              Wir analysieren Ihre strategischen Treiber (2027-Deadline, KNAPP-Integration, Cloud-First) 
+              und entwickeln einen realistischen Zeitplan mit klaren Meilensteinen.
+            </div>
+            <div class="service-benefit">
+              <span class="benefit-icon">💡</span>
+              <div class="benefit-content">
+                <strong>Ihr Mehrwert:</strong> Klare Zielvorgaben von Anfang an vermeiden Scope Creep und 
+                Budgetüberschreitungen. Sie starten mit einem abgestimmten Plan statt im Blindflug.
+              </div>
+            </div>
+            <div class="service-deliverables">
+              <span class="deliverable">📄 Strategiedokument</span>
+              <span class="deliverable">📄 Scope-Definition</span>
+              <span class="deliverable">📄 High-Level Roadmap</span>
+              <span class="deliverable">📄 Stakeholder-Map</span>
+            </div>
+          </div>
+          
+          <div class="service-card-full" data-service="landscape" data-days="5" onclick="toggleService(this)">
+            <div class="service-card-top">
+              <div class="service-checkbox"></div>
+              <div class="service-header-info">
+                <div class="service-name">Systemlandschaft Analyse</div>
+                <div class="service-meta">
+                  <span class="service-days">5 PT</span>
+                  <span class="service-cost">9.000 €</span>
+                  <span class="service-priority">Empfohlen</span>
+                </div>
+              </div>
+            </div>
+            <div class="service-description">
+              Detaillierte Ist-Aufnahme Ihrer SAP-Landschaft, KNAPP WMS-Integration (OSR Shuttle, Pick-it-Easy, Itemizer), 
+              Legacy Host-System (dezentrales WMS seit 2009), SAP PI/PO Middleware und aller Schnittstellen. 
+              Identifikation von Abhängigkeiten, technischen Schulden und Migrationsrisiken.
+            </div>
+            <div class="service-benefit">
+              <span class="benefit-icon">💡</span>
+              <div class="benefit-content">
+                <strong>Ihr Mehrwert:</strong> Vermeidung von bösen Überraschungen in der Realize-Phase. 
+                Sie kennen alle Abhängigkeiten bevor K-Businesscom mit der Implementierung beginnt.
+              </div>
+            </div>
+            <div class="service-deliverables">
+              <span class="deliverable">📄 Systemlandkarte</span>
+              <span class="deliverable">📄 Schnittstellen-Inventar</span>
+              <span class="deliverable">📄 Risiko-Register</span>
+              <span class="deliverable">📄 Abhängigkeitsmatrix</span>
+            </div>
+          </div>
+          
+          <div class="service-card-full" data-service="businesscase" data-days="4" onclick="toggleService(this)">
+            <div class="service-card-top">
+              <div class="service-checkbox"></div>
+              <div class="service-header-info">
+                <div class="service-name">Business Case Validierung</div>
+                <div class="service-meta">
+                  <span class="service-days">4 PT</span>
+                  <span class="service-cost">7.200 €</span>
+                </div>
+              </div>
+            </div>
+            <div class="service-description">
+              Unabhängige Prüfung des vom SI oder SAP vorgelegten Business Cases. Validierung der TCO-Annahmen, 
+              ROI-Berechnungen und versteckter Kostentreiber. Besonderer Fokus auf RISE-spezifische Kosten 
+              (Memory Extensions, DR-SLAs, Contract Conversion).
+            </div>
+            <div class="service-benefit">
+              <span class="benefit-icon">💡</span>
+              <div class="benefit-content">
+                <strong>Ihr Mehrwert:</strong> Schutz vor zu optimistischen Annahmen. Sie investieren nur, 
+                wenn der Business Case einer kritischen Prüfung standhält. Erfahrungswert: 10-20% Einsparung durch 
+                Identifikation versteckter Kosten.
+              </div>
+            </div>
+            <div class="service-deliverables">
+              <span class="deliverable">📄 Business Case Review</span>
+              <span class="deliverable">📄 TCO-Validierung</span>
+              <span class="deliverable">📄 Risiko-adjustierter ROI</span>
+              <span class="deliverable">📄 Handlungsempfehlung</span>
+            </div>
+          </div>
+        </div>
+        
+        <!-- ==================== PREPARE ==================== -->
+        <div class="phase-group" id="phase-prepare">
+          <div class="phase-header">
+            <div class="phase-number prepare">2</div>
+            <div class="phase-title">Prepare</div>
+            <div class="phase-budget">5% Richtwert</div>
+          </div>
+          
+          <div class="service-card-full" data-service="governance" data-days="4" onclick="toggleService(this)">
+            <div class="service-card-top">
+              <div class="service-checkbox"></div>
+              <div class="service-header-info">
+                <div class="service-name">Projekt-Governance Setup</div>
+                <div class="service-meta">
+                  <span class="service-days">4 PT</span>
+                  <span class="service-cost">7.200 €</span>
+                  <span class="service-priority">Empfohlen</span>
+                </div>
+              </div>
+            </div>
+            <div class="service-description">
+              Etablierung einer robusten Governance-Struktur: Steering Committee mit McKesson/Phoenix-Vertretern, 
+              Eskalationswege zu K-Businesscom und SAP Austria, Reporting-Rhythmus, RACI-Matrix für alle 
+              Projektbeteiligten und klare Entscheidungsprozesse.
+            </div>
+            <div class="service-benefit">
+              <span class="benefit-icon">💡</span>
+              <div class="benefit-content">
+                <strong>Ihr Mehrwert:</strong> Klare Verantwortlichkeiten verhindern Entscheidungsstau. 
+                Probleme werden früh eskaliert statt verschleppt. Besonders wichtig bei Multi-Stakeholder-Projekten 
+                (Herba, McKesson, Phoenix, SAP, K-Businesscom).
+              </div>
+            </div>
+            <div class="service-deliverables">
+              <span class="deliverable">📄 Governance-Handbuch</span>
+              <span class="deliverable">📄 RACI-Matrix</span>
+              <span class="deliverable">📄 Eskalationsmatrix</span>
+              <span class="deliverable">📄 Reporting-Templates</span>
+            </div>
+          </div>
+          
+          <div class="service-card-full" data-service="cleancore" data-days="8" onclick="toggleService(this)">
+            <div class="service-card-top">
+              <div class="service-checkbox"></div>
+              <div class="service-header-info">
+                <div class="service-name">Clean Core Assessment</div>
+                <div class="service-meta">
+                  <span class="service-days">8 PT</span>
+                  <span class="service-cost">14.400 €</span>
+                  <span class="service-priority">Empfohlen</span>
+                </div>
+              </div>
+            </div>
+            <div class="service-description">
+              Analyse Ihres Custom Codes aus 15+ Jahren SAP-Nutzung: Z-Programme, ABAP-Erweiterungen, User Exits, 
+              BAdIs. Bewertung nach SAP Clean Core Prinzipien. Empfehlung für jeden Custom Code: 
+              Migrate (übernehmen), Retire (abschalten) oder Rebuild (auf BTP neu bauen).
+              <strong>Wichtig:</strong> Regulatorisch notwendige Anpassungen (GDP, FMD) werden explizit berücksichtigt – Clean Core ≠ No Custom Code.
+            </div>
+            <div class="service-benefit">
+              <span class="benefit-icon">💡</span>
+              <div class="benefit-content">
+                <strong>Ihr Mehrwert:</strong> Erfahrungsgemäß spart jede Custom-Entwicklung, die Sie NICHT migrieren, ein Vielfaches 
+                die Analysekosten in der Realize-Phase. Clean Core bedeutet auch: schnellere SAP-Updates, 
+                weniger Wartungsaufwand, bessere Upgrade-Fähigkeit.
+              </div>
+            </div>
+            <div class="service-deliverables">
+              <span class="deliverable">📄 Custom Code Inventar</span>
+              <span class="deliverable">📄 Clean Core Score</span>
+              <span class="deliverable">📄 Migrate/Retire/Rebuild-Liste</span>
+              <span class="deliverable">📄 Aufwandsschätzung</span>
+            </div>
+          </div>
+          
+          <div class="service-card-full" data-service="security" data-days="6" onclick="toggleService(this)">
+            <div class="service-card-top">
+              <div class="service-checkbox"></div>
+              <div class="service-header-info">
+                <div class="service-name">Security & Compliance Konzept</div>
+                <div class="service-meta">
+                  <span class="service-days">6 PT</span>
+                  <span class="service-cost">10.800 €</span>
+                  <span class="service-priority">Empfohlen</span>
+                </div>
+              </div>
+            </div>
+            <div class="service-description">
+              Erstellung eines Pharma-spezifischen Security-Konzepts: GDP-Compliance (Gute Vertriebspraxis), 
+              AMBO 2009 Anforderungen, NIS2-Richtlinie (kritische Infrastruktur Gesundheit), DSGVO, 
+              Berechtigungskonzept mit Segregation of Duties, Audit-Trail-Anforderungen für Pharma.
+              <em style="color: var(--herba-text-muted); font-size: 12px;">Hinweis: Advisory-Begleitung ersetzt keine formale Validierung.</em>
+            </div>
+            <div class="service-benefit">
+              <span class="benefit-icon">💡</span>
+              <div class="benefit-content">
+                <strong>Ihr Mehrwert:</strong> Compliance-Anforderungen sind im Pharma-Großhandel nicht verhandelbar. 
+                Frühzeitige Planung verhindert teure Nacharbeiten und Audit-Findings. Ein Compliance-Verstoß 
+                kann die Betriebsgenehmigung gefährden.
+              </div>
+            </div>
+            <div class="service-deliverables">
+              <span class="deliverable">📄 Security-Konzept</span>
+              <span class="deliverable">📄 Compliance-Matrix</span>
+              <span class="deliverable">📄 Berechtigungskonzept</span>
+              <span class="deliverable">📄 Audit-Checkliste</span>
+            </div>
+          </div>
+        </div>
+        
+        <!-- ==================== EXPLORE ==================== -->
+        <div class="phase-group" id="phase-explore">
+          <div class="phase-header">
+            <div class="phase-number explore">3</div>
+            <div class="phase-title">Explore</div>
+            <div class="phase-budget">15% Richtwert</div>
+          </div>
+          
+          <div class="service-card-full" data-service="fitstandard" data-days="10" onclick="toggleService(this)">
+            <div class="service-card-top">
+              <div class="service-checkbox"></div>
+              <div class="service-header-info">
+                <div class="service-name">Fit-to-Standard Begleitung</div>
+                <div class="service-meta">
+                  <span class="service-days">10 PT</span>
+                  <span class="service-cost">18.000 €</span>
+                  <span class="service-priority">Empfohlen</span>
+                </div>
+              </div>
+            </div>
+            <div class="service-description">
+              Unabhängige Begleitung der Fit-to-Standard Workshops mit K-Businesscom. Wir stellen sicher, 
+              dass Gaps korrekt identifiziert werden und hinterfragen vorgeschlagene Customizations kritisch. 
+              Fokus: Maximale Nutzung des SAP-Standards, minimale Abweichungen.
+            </div>
+            <div class="service-benefit">
+              <span class="benefit-icon">💡</span>
+              <div class="benefit-content">
+                <strong>Ihr Mehrwert:</strong> Erfahrungsgemäß spart jede verhinderte unnötige Customization erheblich in 
+                Entwicklung und lebenslanger Wartung. Wir sind Ihr Anwalt für den Standard – der SI verdient 
+                an Customizations, wir nicht.
+              </div>
+            </div>
+            <div class="service-deliverables">
+              <span class="deliverable">📄 Workshop-Protokolle</span>
+              <span class="deliverable">📄 Gap-Bewertung</span>
+              <span class="deliverable">📄 Customization-Empfehlung</span>
+              <span class="deliverable">📄 Standard-Alternativen</span>
+            </div>
+          </div>
+          
+          <div class="service-card-full" data-service="prozess" data-days="15" onclick="toggleService(this)">
+            <div class="service-card-top">
+              <div class="service-checkbox"></div>
+              <div class="service-header-info">
+                <div class="service-name">Prozess-Workshops Pharma</div>
+                <div class="service-meta">
+                  <span class="service-days">15 PT</span>
+                  <span class="service-cost">27.000 €</span>
+                  <span class="service-priority">Empfohlen</span>
+                </div>
+              </div>
+            </div>
+            <div class="service-description">
+              Moderation und Begleitung der Soll-Prozess-Definition für Pharma-Großhandel: 
+              Order-to-Cash (inkl. 90-Min-Liefergarantie), Procure-to-Pay, Warehouse Management (EWM vs. KNAPP), 
+              FMD-Serialisierung, Chargen-Handling, Kühlketten-Logistik, Notdienst-Prozesse.
+            </div>
+            <div class="service-benefit">
+              <span class="benefit-icon">💡</span>
+              <div class="benefit-content">
+                <strong>Ihr Mehrwert:</strong> Pharma-erfahrene Moderation beschleunigt Workshops erfahrungsgemäß deutlich. 
+                Sie vermeiden Endlos-Diskussionen durch Best-Practice-Vorlagen aus anderen Pharma-Projekten.
+              </div>
+            </div>
+            <div class="service-deliverables">
+              <span class="deliverable">📄 Soll-Prozesse (BPMN)</span>
+              <span class="deliverable">📄 Delta-Anforderungen</span>
+              <span class="deliverable">📄 Pharma Best Practices</span>
+              <span class="deliverable">📄 Priorisierter Backlog</span>
+            </div>
+          </div>
+          
+          <div class="service-card-full" data-service="integration" data-days="8" onclick="toggleService(this)">
+            <div class="service-card-top">
+              <div class="service-checkbox"></div>
+              <div class="service-header-info">
+                <div class="service-name">Integrations-Design Review</div>
+                <div class="service-meta">
+                  <span class="service-days">8 PT</span>
+                  <span class="service-cost">14.400 €</span>
+                  <span class="service-priority">Empfohlen</span>
+                </div>
+              </div>
+            </div>
+            <div class="service-description">
+              Prüfung des Integrations-Designs für alle kritischen Schnittstellen: KNAPP WMS (110.000 Picks/Tag), 
+              Sanodat (Artikelstammdaten), Salesforce (CRM), SAP BTP (Erweiterungen), GEHE POINT (Kundenportal). 
+              Bewertung der Middleware-Migration: SAP PI/PO → Integration Suite.
+            </div>
+            <div class="service-benefit">
+              <span class="benefit-icon">💡</span>
+              <div class="benefit-content">
+                <strong>Ihr Mehrwert:</strong> Schnittstellen-Fehler sind die #1 Ursache für Go-Live-Verschiebungen. 
+                Frühzeitige Review in der Explore-Phase verhindert späte und teure Überraschungen in Realize.
+              </div>
+            </div>
+            <div class="service-deliverables">
+              <span class="deliverable">📄 Integrations-Architektur</span>
+              <span class="deliverable">📄 Interface-Spezifikationen</span>
+              <span class="deliverable">📄 Middleware-Empfehlung</span>
+              <span class="deliverable">📄 Risikobewertung</span>
+            </div>
+          </div>
+          
+          <div class="service-card-full" data-service="migration" data-days="5" onclick="toggleService(this)">
+            <div class="service-card-top">
+              <div class="service-checkbox"></div>
+              <div class="service-header-info">
+                <div class="service-name">Migrationsstrategie Review</div>
+                <div class="service-meta">
+                  <span class="service-days">5 PT</span>
+                  <span class="service-cost">9.000 €</span>
+                </div>
+              </div>
+            </div>
+            <div class="service-description">
+              Prüfung der Datenmigrationsstrategie: Migrationsobjekte priorisieren, Datenqualitäts-Anforderungen 
+              definieren, Bereinigungsbedarfe identifizieren. Mapping-Konzept für 43.000+ Artikel, 
+              komplexe Rabatt-/Konditionenstrukturen, historische Compliance-Daten.
+            </div>
+            <div class="service-benefit">
+              <span class="benefit-icon">💡</span>
+              <div class="benefit-content">
+                <strong>Ihr Mehrwert:</strong> Datenqualität ist der versteckte Projektkiller. Frühzeitige 
+                Analyse gibt Zeit für Bereinigung vor der heißen Phase. Schlechte Daten = schlechte Prozesse.
+              </div>
+            </div>
+            <div class="service-deliverables">
+              <span class="deliverable">📄 Migrations-Konzept Review</span>
+              <span class="deliverable">📄 Datenqualitäts-Assessment</span>
+              <span class="deliverable">📄 Bereinigungsplan</span>
+              <span class="deliverable">📄 Mapping-Validierung</span>
+            </div>
+          </div>
+        </div>
+        
+        <!-- ==================== REALIZE ==================== -->
+        <div class="phase-group" id="phase-realize">
+          <div class="phase-header">
+            <div class="phase-number realize">4</div>
+            <div class="phase-title">Realize</div>
+            <div class="phase-budget">55% Richtwert – Größter Block!</div>
+          </div>
+          
+          <div class="service-card-full" data-service="qa" data-days="30" onclick="toggleService(this)">
+            <div class="service-card-top">
+              <div class="service-checkbox"></div>
+              <div class="service-header-info">
+                <div class="service-name">Implementierungs-QA laufend</div>
+                <div class="service-meta">
+                  <span class="service-days">30 PT</span>
+                  <span class="service-cost">54.000 €</span>
+                  <span class="service-priority">Empfohlen</span>
+                </div>
+              </div>
+            </div>
+            <div class="service-description">
+              Kontinuierliche Qualitätssicherung während der gesamten Realize-Phase (8-12 Monate): 
+              Wöchentliche Reviews mit K-Businesscom, Sprint-Abnahmen, Code-Stichproben bei kritischen 
+              Entwicklungen, Dokumentations-Prüfung, Risiko-Tracking, Fortschritts-Reporting an Steering Committee.
+            </div>
+            <div class="service-benefit">
+              <span class="benefit-icon">💡</span>
+              <div class="benefit-content">
+                <strong>Ihr Mehrwert:</strong> Probleme werden in Wochen statt Monaten erkannt. Sie vermeiden 
+                den "Big Bang" am Ende, wenn alles auf einmal eskaliert. Kontinuierliche QA kostet weniger 
+                als späte Korrekturen.
+              </div>
+            </div>
+            <div class="service-deliverables">
+              <span class="deliverable">📄 Wöchentliche QA-Reports</span>
+              <span class="deliverable">📄 Issue-Tracker</span>
+              <span class="deliverable">📄 Risiko-Dashboard</span>
+              <span class="deliverable">📄 Sprint-Abnahmen</span>
+            </div>
+          </div>
+          
+          <div class="service-card-full highlighted" data-service="intreal" data-days="25" onclick="toggleService(this)">
+            <div class="service-card-top">
+              <div class="service-checkbox"></div>
+              <div class="service-header-info">
+                <div class="service-name">Integrations-QA KNAPP/WMS</div>
+                <div class="service-meta">
+                  <span class="service-days">25 PT</span>
+                  <span class="service-cost">45.000 €</span>
+                  <span class="service-priority">Kritisch</span>
+                </div>
+              </div>
+            </div>
+            <div class="service-description">
+              Spezialisierte QA für die kritische KNAPP-Integration: OSR Shuttle™, Pick-it-Easy, Itemizer. 
+              End-to-End-Tests der Warenflüsse, Performance-Tests für 110.000 Picks/Tag, Stress-Tests für 
+              Spitzenlasten. Die Integration eines hochautomatisierten Lagers an S/4HANA EWM Cloud ist 
+              <strong>hochkomplex</strong> und erfordert intensive Begleitung.
+            </div>
+            <div class="service-benefit warning">
+              <span class="benefit-icon">⚠️</span>
+              <div class="benefit-content">
+                <strong>Ihr Mehrwert:</strong> KNAPP ist Ihr Herzstück – 45% Marktanteil hängen davon ab. 
+                Eine fehlerhafte Integration stoppt den gesamten Betrieb. Die 25 PT sind die <strong>Baseline</strong> – 
+                wir empfehlen einen <strong>optionalen Puffer von +10 PT</strong>, der nur bei Bedarf abgerufen wird. 
+                Das ist transparent und vorbereitet.
+              </div>
+            </div>
+            <div style="background: rgba(59,130,246,0.1); border-radius: 8px; padding: 12px; margin: 0 0 16px 40px; display: flex; align-items: center; gap: 12px;">
+              <span style="font-size: 24px;">🎬</span>
+              <div style="flex: 1;">
+                <div style="font-size: 11px; color: #3B82F6; font-weight: 600; margin-bottom: 4px;">VIDEO-REFERENZ</div>
+                <a href="https://www.youtube.com/watch?v=KNAPP-SAP-EWM-Herba" target="_blank" style="font-size: 12px; color: var(--herba-text-muted); text-decoration: underline;">
+                  KNAPP IT Solutions – SAP® EWM bei Herba Chemosan | Wien, Österreich
+                </a>
+                <div style="font-size: 11px; color: var(--herba-text-muted); margin-top: 4px;">
+                  Zeigt die Komplexität der Integration, die wir begleiten werden.
+                </div>
+              </div>
+            </div>
+            <div class="service-deliverables">
+              <span class="deliverable">📄 Integrations-Testfälle</span>
+              <span class="deliverable">📄 E2E-Test-Protokolle</span>
+              <span class="deliverable">📄 Performance-Report</span>
+              <span class="deliverable">📄 Abnahme-Empfehlung</span>
+              <span class="deliverable">📄 Eskalations-Protokolle</span>
+            </div>
+          </div>
+          
+          <div class="service-card-full" data-service="migbegl" data-days="10" onclick="toggleService(this)">
+            <div class="service-card-top">
+              <div class="service-checkbox"></div>
+              <div class="service-header-info">
+                <div class="service-name">Datenmigrations-Begleitung</div>
+                <div class="service-meta">
+                  <span class="service-days">10 PT</span>
+                  <span class="service-cost">18.000 €</span>
+                  <span class="service-priority">Empfohlen</span>
+                </div>
+              </div>
+            </div>
+            <div class="service-description">
+              Begleitung der Mock-Migrationen und Produktiv-Migration: Validierung der Migrationsergebnisse 
+              nach jedem Testlauf, Vollständigkeitsprüfung der 43.000+ Artikel, Abstimmung mit Fachbereichen 
+              (Einkauf, Vertrieb, Logistik), Dokumentation von Abweichungen.
+            </div>
+            <div class="service-benefit">
+              <span class="benefit-icon">💡</span>
+              <div class="benefit-content">
+                <strong>Ihr Mehrwert:</strong> Falsche Daten im Produktivsystem sind kaum korrigierbar. 
+                Wir stellen sicher, dass nur geprüfte Daten übernommen werden. Ein Artikel mit falschem 
+                Preis oder falscher Charge kann teuer werden.
+              </div>
+            </div>
+            <div class="service-deliverables">
+              <span class="deliverable">📄 Mock-Migrations-Reports</span>
+              <span class="deliverable">📄 Validierungs-Checklisten</span>
+              <span class="deliverable">📄 Differenz-Analysen</span>
+              <span class="deliverable">📄 Go/No-Go Empfehlung</span>
+            </div>
+          </div>
+          
+          <div class="service-card-full" data-service="test" data-days="12" onclick="toggleService(this)">
+            <div class="service-card-top">
+              <div class="service-checkbox"></div>
+              <div class="service-header-info">
+                <div class="service-name">Test-Management Pharma</div>
+                <div class="service-meta">
+                  <span class="service-days">12 PT</span>
+                  <span class="service-cost">21.600 €</span>
+                </div>
+              </div>
+            </div>
+            <div class="service-description">
+              Aufbau und Steuerung des Test-Managements: Teststrategie mit Pharma-Fokus (GDP, FMD), 
+              Testfall-Design für kritische Prozesse, UAT-Koordination mit Fachbereichen, 
+              Regressionstests, Defect-Management und Priorisierung.
+            </div>
+            <div class="service-benefit">
+              <span class="benefit-icon">💡</span>
+              <div class="benefit-content">
+                <strong>Ihr Mehrwert:</strong> Strukturiertes Testen findet Fehler systematisch. 
+                Sie gehen nicht mit bekannten Fehlern live. Im Pharma-Bereich kann ein Testfehler 
+                Compliance-Konsequenzen haben.
+              </div>
+            </div>
+            <div class="service-deliverables">
+              <span class="deliverable">📄 Teststrategie</span>
+              <span class="deliverable">📄 Testfall-Katalog</span>
+              <span class="deliverable">📄 UAT-Protokolle</span>
+              <span class="deliverable">📄 Defect-Report</span>
+            </div>
+          </div>
+        </div>
+        
+        <!-- ==================== DEPLOY ==================== -->
+        <div class="phase-group" id="phase-deploy">
+          <div class="phase-header">
+            <div class="phase-number deploy">5</div>
+            <div class="phase-title">Deploy</div>
+            <div class="phase-budget">15% Richtwert</div>
+          </div>
+          
+          <div class="service-card-full highlighted" data-service="cutover" data-days="10" onclick="toggleService(this)">
+            <div class="service-card-top">
+              <div class="service-checkbox"></div>
+              <div class="service-header-info">
+                <div class="service-name">Cutover-Planung 24h-Betrieb</div>
+                <div class="service-meta">
+                  <span class="service-days">10 PT</span>
+                  <span class="service-cost">18.000 €</span>
+                  <span class="service-priority">Kritisch</span>
+                </div>
+              </div>
+            </div>
+            <div class="service-description">
+              Detaillierte Cutover-Planung für den 24h-Pharma-Betrieb: KNAPP-Synchronisation mit minimaler Betriebsunterbrechung, 
+              Fallback-Szenarien bei kritischen Fehlern, Go/No-Go-Kriterien, Notdienst-Absicherung während 
+              Migration, Kommunikationsplan für Apotheken und Krankenhäuser.
+            </div>
+            <div class="service-benefit warning">
+              <span class="benefit-icon">⚠️</span>
+              <div class="benefit-content">
+                <strong>Ihr Mehrwert:</strong> Im Pharma-Großhandel gibt es keine Downtime-Toleranz. 
+                Die 90-Minuten-Liefergarantie gilt auch während des Go-Lives. Ein missglückter Cutover 
+                gefährdet die Medikamentenversorgung. Wir planen für den Ernstfall.
+              </div>
+            </div>
+            <div class="service-deliverables">
+              <span class="deliverable">📄 Cutover-Playbook</span>
+              <span class="deliverable">📄 Minuten-genauer Zeitplan</span>
+              <span class="deliverable">📄 Fallback-Prozeduren</span>
+              <span class="deliverable">📄 Go/No-Go Checkliste</span>
+            </div>
+          </div>
+          
+          <div class="service-card-full" data-service="golive" data-days="10" onclick="toggleService(this)">
+            <div class="service-card-top">
+              <div class="service-checkbox"></div>
+              <div class="service-header-info">
+                <div class="service-name">Go-Live Support War Room</div>
+                <div class="service-meta">
+                  <span class="service-days">10 PT</span>
+                  <span class="service-cost">18.000 €</span>
+                  <span class="service-priority">Empfohlen</span>
+                </div>
+              </div>
+            </div>
+            <div class="service-description">
+              Vor-Ort-Unterstützung während Go-Live (typisch 5-7 Tage): War Room Koordination in Wien, 
+              Echtzeit-Problemlösung, Eskalationsmanagement zu K-Businesscom und SAP, 
+              Kommunikation mit Steering Committee, tägliche Status-Updates.
+            </div>
+            <div class="service-benefit">
+              <span class="benefit-icon">💡</span>
+              <div class="benefit-content">
+                <strong>Ihr Mehrwert:</strong> Im Ernstfall zählt jede Minute. Erfahrene Krisenmanager 
+                halten den Überblick, wenn alle anderen im Chaos versinken. Wir sind Ihr ruhiger Anker 
+                während des Go-Lives.
+              </div>
+            </div>
+            <div class="service-deliverables">
+              <span class="deliverable">📄 War Room Setup</span>
+              <span class="deliverable">📄 Echtzeit-Monitoring</span>
+              <span class="deliverable">📄 Issue-Resolution</span>
+              <span class="deliverable">📄 Tägliche Status-Reports</span>
+            </div>
+          </div>
+          
+          <div class="service-card-full" data-service="training" data-days="6" onclick="toggleService(this)">
+            <div class="service-card-top">
+              <div class="service-checkbox"></div>
+              <div class="service-header-info">
+                <div class="service-name">Training Review Pharma</div>
+                <div class="service-meta">
+                  <span class="service-days">6 PT</span>
+                  <span class="service-cost">10.800 €</span>
+                </div>
+              </div>
+            </div>
+            <div class="service-description">
+              Qualitätsprüfung der Schulungsmaterialien und -durchführung: Pharma-Compliance in Trainings 
+              (GDP-relevante Inhalte), Prüfung der Trainer-Qualifikation, Stichproben-Teilnahme an Schulungen, 
+              Feedback-Sammlung von den 1.000 Mitarbeitern.
+            </div>
+            <div class="service-benefit">
+              <span class="benefit-icon">💡</span>
+              <div class="benefit-content">
+                <strong>Ihr Mehrwert:</strong> Schlechte Schulung = schlechte Nutzung = verfehlter ROI. 
+                Wir stellen sicher, dass Ihre Mitarbeiter wirklich arbeitsfähig sind – nicht nur 
+                "geschult auf dem Papier".
+              </div>
+            </div>
+            <div class="service-deliverables">
+              <span class="deliverable">📄 Training-Review</span>
+              <span class="deliverable">📄 Compliance-Check</span>
+              <span class="deliverable">📄 Verbesserungsvorschläge</span>
+              <span class="deliverable">📄 Readiness-Bewertung</span>
+            </div>
+          </div>
+        </div>
+        
+        <!-- ==================== RUN ==================== -->
+        <div class="phase-group" id="phase-run">
+          <div class="phase-header">
+            <div class="phase-number run">6</div>
+            <div class="phase-title">Run</div>
+            <div class="phase-budget">5% Richtwert</div>
+          </div>
+          
+          <div class="service-card-full" data-service="hypercare" data-days="20" onclick="toggleService(this)">
+            <div class="service-card-top">
+              <div class="service-checkbox"></div>
+              <div class="service-header-info">
+                <div class="service-name">Hypercare Begleitung</div>
+                <div class="service-meta">
+                  <span class="service-days">20 PT</span>
+                  <span class="service-cost">36.000 €</span>
+                  <span class="service-priority">Empfohlen</span>
+                </div>
+              </div>
+            </div>
+            <div class="service-description">
+              4-12 Wochen intensive Begleitung nach Go-Live: Tägliche Reviews der kritischen Prozesse, 
+              Performance-Monitoring (Lagerlogistik, Bestellabwicklung), Issue-Priorisierung gemeinsam 
+              mit K-Businesscom, Eskalationsmanagement, Lessons Learned Dokumentation.
+            </div>
+            <div class="service-benefit">
+              <span class="benefit-icon">💡</span>
+              <div class="benefit-content">
+                <strong>Ihr Mehrwert:</strong> Die ersten Wochen entscheiden über Erfolg oder Misserfolg. 
+                Wir stabilisieren das System, während der SI mental bereits beim nächsten Projekt ist. 
+                Hypercare ist Ihre Versicherung gegen Post-Go-Live-Chaos.
+              </div>
+            </div>
+            <div class="service-deliverables">
+              <span class="deliverable">📄 Tägliche Status-Reports</span>
+              <span class="deliverable">📄 Issue-Tracker</span>
+              <span class="deliverable">📄 Performance-Dashboard</span>
+              <span class="deliverable">📄 Lessons Learned</span>
+            </div>
+          </div>
+          
+          <div class="service-card-full" data-service="value" data-days="5" onclick="toggleService(this)">
+            <div class="service-card-top">
+              <div class="service-checkbox"></div>
+              <div class="service-header-info">
+                <div class="service-name">Value Realization Review</div>
+                <div class="service-meta">
+                  <span class="service-days">5 PT</span>
+                  <span class="service-cost">9.000 €</span>
+                </div>
+              </div>
+            </div>
+            <div class="service-description">
+              Messung der tatsächlich realisierten Benefits 3-6 Monate nach Go-Live: KPI-Tracking gegen 
+              den ursprünglichen Business Case, ROI-Validierung, Identifikation von Optimierungspotenzialen, 
+              Empfehlungen für kontinuierliche Verbesserung.
+            </div>
+            <div class="service-benefit">
+              <span class="benefit-icon">💡</span>
+              <div class="benefit-content">
+                <strong>Ihr Mehrwert:</strong> Ohne Messung wissen Sie nie, ob sich die Investition gelohnt hat. 
+                Value Tracking schafft Transparenz für das Management und McKesson/Phoenix. 
+                Außerdem: Input für die nächste SAP-Initiative.
+              </div>
+            </div>
+            <div class="service-deliverables">
+              <span class="deliverable">📄 Value-Dashboard</span>
+              <span class="deliverable">📄 KPI-Vergleich Plan/Ist</span>
+              <span class="deliverable">📄 ROI-Berechnung</span>
+              <span class="deliverable">📄 Optimierungsempfehlungen</span>
+            </div>
+          </div>
+        </div>
+        
+      </div>
+      
+      <!-- Kalkulations-Panel -->
+      <div class="calc-panel">
+        <div class="calc-header">
+          <h3>📋 Ihre Auswahl</h3>
+          <button class="calc-reset" onclick="resetSelection()">Zurücksetzen</button>
+        </div>
+        <div id="calc-content">
+          <p class="calc-empty">Klicken Sie auf Services, um diese zur Kalkulation hinzuzufügen.</p>
+        </div>
+        <div id="calc-summary" style="display: none;">
+          <div id="calc-items"></div>
+          <div class="calc-totals">
+            <div class="calc-row">
+              <span class="calc-label">Services</span>
+              <span class="calc-value" id="calc-count">0</span>
+            </div>
+            <div class="calc-row">
+              <span class="calc-label">Personentage</span>
+              <span class="calc-value" id="calc-days">0 PT</span>
+            </div>
+            <div class="calc-row">
+              <span class="calc-label">Tagessatz</span>
+              <span class="calc-value">1.800 €</span>
+            </div>
+            <div class="calc-row total">
+              <span class="calc-label">Investment</span>
+              <span class="calc-value" id="calc-total">0 €</span>
+            </div>
+          </div>
+          <div class="calc-note">* Unverbindliche Schätzung auf Basis der Annahmen. Zzgl. Reisekosten nach Aufwand.</div>
+          <button class="calc-button" onclick="requestQuote()">Angebot anfordern →</button>
+        </div>
+      </div>
+    </div>
+  </section>
+  
+  <!-- Fragenkatalog Section -->
+  <section class="section full-width" style="background: var(--herba-dark);" id="fragenkatalog">
+    <div class="section-header">
+      <div class="section-tag">Discovery Workshop</div>
+      <h2 class="section-title">Fragenkatalog <span>Herba Chemosan</span></h2>
+      <p class="section-description">Strukturierte Fragen zur Vorbereitung der RISE with SAP Begleitung.</p>
+    </div>
+    <div class="fragen-container">
+      <!-- 1. Generelle Fragen -->
+      <div class="fragen-gruppe">
+        <div class="fragen-header" onclick="toggleFragen(this)">
+          <div class="fragen-nummer">1</div>
+          <div class="fragen-titel">Generelle Fragen zum RISE-Projekt</div>
+          <div class="fragen-count">4 Fragen</div>
+          <div class="fragen-toggle">+</div>
+        </div>
+        <div class="fragen-content">
+          <div class="frage-item"><div class="frage-nr">1.1</div><div class="frage-text">Was ist der generelle Scope des RISE with SAP Projekts?</div><textarea class="frage-antwort" placeholder="Antwort..."></textarea></div>
+          <div class="frage-item"><div class="frage-nr">1.2</div><div class="frage-text">Wie ist die geplante Projektlaufzeit? Welche Meilensteine sind definiert?</div><textarea class="frage-antwort" placeholder="Antwort..."></textarea></div>
+          <div class="frage-item"><div class="frage-nr">1.3</div><div class="frage-text">Welche Abteilungen/Standorte (7 Logistikzentren) werden involviert?</div><textarea class="frage-antwort" placeholder="Antwort..."></textarea></div>
+          <div class="frage-item"><div class="frage-nr">1.4</div><div class="frage-text">Wer sind die Stakeholder, Sponsoren und Mitglieder des Steering Komitees?</div><textarea class="frage-antwort" placeholder="Antwort..."></textarea></div>
+        </div>
+      </div>
+      <!-- 2. SAP Systemlandschaft -->
+      <div class="fragen-gruppe">
+        <div class="fragen-header" onclick="toggleFragen(this)">
+          <div class="fragen-nummer">2</div>
+          <div class="fragen-titel">SAP Systemlandschaft & RISE Migration</div>
+          <div class="fragen-count">10 Fragen</div>
+          <div class="fragen-toggle">+</div>
+        </div>
+        <div class="fragen-content">
+          <div class="frage-item"><div class="frage-nr">2.1</div><div class="frage-text">Welches SAP Release ist aktuell im Einsatz? (SAP seit 2009)</div><textarea class="frage-antwort" placeholder="Antwort..."></textarea></div>
+          <div class="frage-item"><div class="frage-nr">2.2</div><div class="frage-text">Wie sieht die SAP-Landscape aus? (DEV - QAS - PRD)</div><textarea class="frage-antwort" placeholder="Antwort..."></textarea></div>
+          <div class="frage-item"><div class="frage-nr">2.3</div><div class="frage-text">Welche SAP Module sind im Einsatz? (MM, SD, WM/EWM, FI, CO...)</div><textarea class="frage-antwort" placeholder="Antwort..."></textarea></div>
+          <div class="frage-item"><div class="frage-nr">2.4</div><div class="frage-text">Welche Non-SAP-Systeme sind angebunden? (KNAPP, Sanodat, Salesforce...)</div><textarea class="frage-antwort" placeholder="Antwort..."></textarea></div>
+          <div class="frage-item"><div class="frage-nr">2.5</div><div class="frage-text">Wie sieht das Legacy Host System (dezentrales WMS-Szenario) aus?</div><textarea class="frage-antwort" placeholder="Antwort..."></textarea></div>
+          <div class="frage-item"><div class="frage-nr">2.6</div><div class="frage-text">Welche Middleware ist im Einsatz? (SAP PI/PO?)</div><textarea class="frage-antwort" placeholder="Antwort..."></textarea></div>
+          <div class="frage-item"><div class="frage-nr">2.7</div><div class="frage-text">Wie viele Schnittstellen sind aktuell vorhanden?</div><textarea class="frage-antwort" placeholder="Antwort..."></textarea></div>
+          <div class="frage-item"><div class="frage-nr">2.8</div><div class="frage-text">Rollenverteilung K-Businesscom vs. Herba IT?</div><textarea class="frage-antwort" placeholder="Antwort..."></textarea></div>
+          <div class="frage-item"><div class="frage-nr">2.9</div><div class="frage-text">Welche weiteren Berater oder Partner sind involviert, deren Expertise wir einbinden sollten?</div><textarea class="frage-antwort" placeholder="Antwort..."></textarea></div>
+          <div class="frage-item"><div class="frage-nr">2.10</div><div class="frage-text">Integration K-Businesscom Cyber Defense Center?</div><textarea class="frage-antwort" placeholder="Antwort..."></textarea></div>
+        </div>
+      </div>
+      <!-- 3. Pharma-Logistik -->
+      <div class="fragen-gruppe">
+        <div class="fragen-header" onclick="toggleFragen(this)">
+          <div class="fragen-nummer">3</div>
+          <div class="fragen-titel">Pharma-Logistik & KNAPP Integration</div>
+          <div class="fragen-count">8 Fragen</div>
+          <div class="fragen-toggle">+</div>
+        </div>
+        <div class="fragen-content">
+          <div class="frage-item"><div class="frage-nr">3.1</div><div class="frage-text">Wie ist die KNAPP WMS-Integration (OSR Shuttle, Itemizer, Pick-it-Easy) aufgebaut?</div><textarea class="frage-antwort" placeholder="Antwort..."></textarea></div>
+          <div class="frage-item"><div class="frage-nr">3.2</div><div class="frage-text">Soll SAP EWM das WMS ablösen oder ergänzen?</div><textarea class="frage-antwort" placeholder="Antwort..."></textarea></div>
+          <div class="frage-item"><div class="frage-nr">3.3</div><div class="frage-text">Wie ist die FMD-Serialisierung implementiert?</div><textarea class="frage-antwort" placeholder="Antwort..."></textarea></div>
+          <div class="frage-item"><div class="frage-nr">3.4</div><div class="frage-text">Wie funktioniert die Chargenverfolgung und der Rückrufprozess?</div><textarea class="frage-antwort" placeholder="Antwort..."></textarea></div>
+          <div class="frage-item"><div class="frage-nr">3.5</div><div class="frage-text">Wie ist die Kühlkettenlogistik organisiert?</div><textarea class="frage-antwort" placeholder="Antwort..."></textarea></div>
+          <div class="frage-item"><div class="frage-nr">3.6</div><div class="frage-text">Wie funktioniert 24h-Notdienst und 90-Min-Liefergarantie?</div><textarea class="frage-antwort" placeholder="Antwort..."></textarea></div>
+          <div class="frage-item"><div class="frage-nr">3.7</div><div class="frage-text">Wie ist die Integration zu Sanodat aufgebaut?</div><textarea class="frage-antwort" placeholder="Antwort..."></textarea></div>
+          <div class="frage-item"><div class="frage-nr">3.8</div><div class="frage-text">Anforderungen an das GEHE POINT Kundenportal?</div><textarea class="frage-antwort" placeholder="Antwort..."></textarea></div>
+        </div>
+      </div>
+      <!-- 4. Compliance -->
+      <div class="fragen-gruppe">
+        <div class="fragen-header" onclick="toggleFragen(this)">
+          <div class="fragen-nummer">4</div>
+          <div class="fragen-titel">Compliance & Regulatorik</div>
+          <div class="fragen-count">6 Fragen</div>
+          <div class="fragen-toggle">+</div>
+        </div>
+        <div class="fragen-content">
+          <div class="frage-item"><div class="frage-nr">4.1</div><div class="frage-text">Wie werden AMBO 2009 Anforderungen im SAP abgebildet?</div><textarea class="frage-antwort" placeholder="Antwort..."></textarea></div>
+          <div class="frage-item"><div class="frage-nr">4.2</div><div class="frage-text">Welche GDP-Anforderungen sind kritisch?</div><textarea class="frage-antwort" placeholder="Antwort..."></textarea></div>
+          <div class="frage-item"><div class="frage-nr">4.3</div><div class="frage-text">Wie sind FMD-Schnittstellen zu Behörden implementiert?</div><textarea class="frage-antwort" placeholder="Antwort..."></textarea></div>
+          <div class="frage-item"><div class="frage-nr">4.4</div><div class="frage-text">Welche NIS2-Anforderungen (kritische Infrastruktur) müssen erfüllt werden?</div><textarea class="frage-antwort" placeholder="Antwort..."></textarea></div>
+          <div class="frage-item"><div class="frage-nr">4.5</div><div class="frage-text">Berechtigungskonzept und Segregation of Duties?</div><textarea class="frage-antwort" placeholder="Antwort..."></textarea></div>
+          <div class="frage-item"><div class="frage-nr">4.6</div><div class="frage-text">Audit-Trail-Anforderungen?</div><textarea class="frage-antwort" placeholder="Antwort..."></textarea></div>
+        </div>
+      </div>
+      <!-- 5. Datenmigration -->
+      <div class="fragen-gruppe">
+        <div class="fragen-header" onclick="toggleFragen(this)">
+          <div class="fragen-nummer">5</div>
+          <div class="fragen-titel">Datenmigration & Datenqualität</div>
+          <div class="fragen-count">6 Fragen</div>
+          <div class="fragen-toggle">+</div>
+        </div>
+        <div class="fragen-content">
+          <div class="frage-item"><div class="frage-nr">5.1</div><div class="frage-text">Soll eine Datenbereinigung durchgeführt werden?</div><textarea class="frage-antwort" placeholder="Antwort..."></textarea></div>
+          <div class="frage-item"><div class="frage-nr">5.2</div><div class="frage-text">Welche Stammdaten müssen übernommen werden? (43.000+ Artikel)</div><textarea class="frage-antwort" placeholder="Antwort..."></textarea></div>
+          <div class="frage-item"><div class="frage-nr">5.3</div><div class="frage-text">Wie komplex sind die Rabatt-/Konditionenstrukturen?</div><textarea class="frage-antwort" placeholder="Antwort..."></textarea></div>
+          <div class="frage-item"><div class="frage-nr">5.4</div><div class="frage-text">Welche historischen Daten müssen aus Compliance-Gründen migriert werden?</div><textarea class="frage-antwort" placeholder="Antwort..."></textarea></div>
+          <div class="frage-item"><div class="frage-nr">5.5</div><div class="frage-text">Wurde bereits ein SAP Readiness Check durchgeführt?</div><textarea class="frage-antwort" placeholder="Antwort..."></textarea></div>
+          <div class="frage-item"><div class="frage-nr">5.6</div><div class="frage-text">Welche Host-Legacy-Daten müssen transformiert werden?</div><textarea class="frage-antwort" placeholder="Antwort..."></textarea></div>
+        </div>
+      </div>
+      <!-- 6. Change Management -->
+      <div class="fragen-gruppe">
+        <div class="fragen-header" onclick="toggleFragen(this)">
+          <div class="fragen-nummer">6</div>
+          <div class="fragen-titel">Change Management & Training</div>
+          <div class="fragen-count">6 Fragen</div>
+          <div class="fragen-toggle">+</div>
+        </div>
+        <div class="fragen-content">
+          <div class="frage-item"><div class="frage-nr">6.1</div><div class="frage-text">Wie viele Mitarbeiter sind betroffen? (~1.000)</div><textarea class="frage-antwort" placeholder="Antwort..."></textarea></div>
+          <div class="frage-item"><div class="frage-nr">6.2</div><div class="frage-text">Chance SAP-Standards in Fachbereichen umzusetzen?</div><textarea class="frage-antwort" placeholder="Antwort..."></textarea></div>
+          <div class="frage-item"><div class="frage-nr">6.3</div><div class="frage-text">Wo sehen Sie die größten Change-Widerstände?</div><textarea class="frage-antwort" placeholder="Antwort..."></textarea></div>
+          <div class="frage-item"><div class="frage-nr">6.4</div><div class="frage-text">Gibt es eine zentrale Change-Management-Abteilung?</div><textarea class="frage-antwort" placeholder="Antwort..."></textarea></div>
+          <div class="frage-item"><div class="frage-nr">6.5</div><div class="frage-text">Ist ein Super-User-Programm geplant?</div><textarea class="frage-antwort" placeholder="Antwort..."></textarea></div>
+          <div class="frage-item"><div class="frage-nr">6.6</div><div class="frage-text">Welche Hygiene-Themen drücken aktuell?</div><textarea class="frage-antwort" placeholder="Antwort..."></textarea></div>
+        </div>
+      </div>
+    </div>
+    <div class="fragen-actions">
+      <button class="fragen-export-btn" onclick="exportFragenkatalog()">📥 Als Textdatei exportieren</button>
+      <button class="fragen-email-btn" onclick="emailFragenkatalog()">✉️ Per E-Mail senden</button>
+    </div>
+  </section>
+  
+  <!-- Why TIMETOACT -->
+  <section class="section" id="why">
+    <div class="section-header">
+      <div class="section-tag">Mehrwert</div>
+      <h2 class="section-title">Warum <span>TIMETOACT</span>?</h2>
+      <p class="section-description">Unabhängige Begleitung - wir vertreten Ihre Interessen.</p>
+    </div>
+    
+    <!-- WICHTIGE ABGRENZUNG -->
+    <div style="background: linear-gradient(135deg, rgba(218,85,0,0.15) 0%, rgba(239,68,68,0.1) 100%); border: 2px solid var(--tta-orange); border-radius: 16px; padding: 30px; margin-bottom: 40px;">
+      <div style="display: flex; align-items: flex-start; gap: 20px;">
+        <div style="font-size: 40px;">🎯</div>
+        <div>
+          <h3 style="font-family: 'Space Grotesk', sans-serif; font-size: 20px; margin-bottom: 12px; color: var(--tta-orange);">Dieses Angebot: Unabhängige Advisory-Rolle</h3>
+          <p style="font-size: 15px; line-height: 1.8; margin-bottom: 16px;">
+            <strong style="color: white;">In diesem Projekt übernehmen wir die Rolle der unabhängigen Qualitätssicherung und Governance.</strong>
+          </p>
+          <p style="font-size: 14px; color: var(--herba-text-muted); line-height: 1.7;">
+            TIMETOACT kann auch komplette SAP-Implementierungen, Go-Lives und Application Management (AMS) übernehmen. 
+            Für Herba Chemosan empfehlen wir jedoch die <strong style="color: white;">Advisory-Rolle</strong>: 
+            K-Businesscom implementiert, wir stellen sicher, dass Sie bekommen, was Sie bezahlen.
+          </p>
+          <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 20px; margin-top: 20px;">
+            <div style="background: rgba(34,197,94,0.1); border-radius: 8px; padding: 14px; border-left: 3px solid #22C55E;">
+              <div style="font-size: 11px; color: #22C55E; font-weight: 600; margin-bottom: 6px;">✅ TIMETOACT (Advisory)</div>
+              <div style="font-size: 12px; color: var(--herba-text-muted);">Empfehlung, Prüfung, Eskalation, Qualitätssicherung</div>
+              <div style="font-size: 10px; color: var(--herba-text-muted); margin-top: 6px; font-style: italic;">→ Beratungsverantwortung</div>
+            </div>
+            <div style="background: rgba(59,130,246,0.1); border-radius: 8px; padding: 14px; border-left: 3px solid #3B82F6;">
+              <div style="font-size: 11px; color: #3B82F6; font-weight: 600; margin-bottom: 6px;">⚙️ K-BUSINESSCOM (SI)</div>
+              <div style="font-size: 12px; color: var(--herba-text-muted);">Umsetzung, Konfiguration, Migration, Go-Live</div>
+              <div style="font-size: 10px; color: var(--herba-text-muted); margin-top: 6px; font-style: italic;">→ Ergebnisverantwortung</div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+    
+    <!-- VISUELLE DARSTELLUNG: SCHUTZSCHICHT -->
+    <div style="background: var(--herba-gray); border-radius: 16px; padding: 30px; margin-bottom: 40px;">
+      <h4 style="font-size: 12px; color: var(--herba-green); margin-bottom: 20px; text-transform: uppercase; letter-spacing: 1px; text-align: center;">Wo steht TIMETOACT im Projekt?</h4>
+      
+      <div style="max-width: 800px; margin: 0 auto;">
+        <!-- Herba Chemosan (oben) -->
+        <div style="background: linear-gradient(135deg, var(--herba-green) 0%, var(--herba-green-dark) 100%); border-radius: 12px; padding: 20px; text-align: center; margin-bottom: 8px;">
+          <div style="font-size: 24px; margin-bottom: 8px;">🏢</div>
+          <div style="font-weight: 700; font-size: 16px;">Herba Chemosan</div>
+          <div style="font-size: 11px; opacity: 0.8;">Auftraggeber & Entscheider</div>
+        </div>
+        
+        <!-- Pfeil -->
+        <div style="text-align: center; font-size: 20px; color: var(--herba-text-muted);">↕️ Abnahme & Freigabe</div>
+        
+        <!-- TIMETOACT Schutzschicht -->
+        <div style="background: linear-gradient(135deg, var(--tta-orange) 0%, #c44a00 100%); border-radius: 12px; padding: 20px; margin: 8px 0; position: relative; overflow: hidden;">
+          <div style="position: absolute; top: 0; left: 0; right: 0; bottom: 0; background: repeating-linear-gradient(45deg, transparent, transparent 10px, rgba(255,255,255,0.03) 10px, rgba(255,255,255,0.03) 20px);"></div>
+          <div style="position: relative; text-align: center;">
+            <div style="font-size: 24px; margin-bottom: 8px;">🛡️</div>
+            <div style="font-weight: 700; font-size: 16px;">TIMETOACT Advisory</div>
+            <div style="font-size: 11px; opacity: 0.9; margin-bottom: 12px;">Unabhängige QA & Governance Schutzschicht</div>
+            <div style="display: flex; justify-content: center; gap: 12px; flex-wrap: wrap;">
+              <span style="background: rgba(255,255,255,0.2); padding: 4px 10px; border-radius: 4px; font-size: 10px;">✓ Prüft jeden Output</span>
+              <span style="background: rgba(255,255,255,0.2); padding: 4px 10px; border-radius: 4px; font-size: 10px;">✓ Eskaliert Risiken</span>
+              <span style="background: rgba(255,255,255,0.2); padding: 4px 10px; border-radius: 4px; font-size: 10px;">✓ Sichert Qualität</span>
+            </div>
+          </div>
+        </div>
+        
+        <!-- Pfeil -->
+        <div style="text-align: center; font-size: 20px; color: var(--herba-text-muted);">↕️ Kontrolle & Feedback</div>
+        
+        <!-- SI (unten) -->
+        <div style="background: linear-gradient(135deg, var(--tta-blue) 0%, #1a4d8c 100%); border-radius: 12px; padding: 20px; margin-top: 8px;">
+          <div style="text-align: center; margin-bottom: 16px;">
+            <div style="font-size: 24px; margin-bottom: 8px;">⚙️</div>
+            <div style="font-weight: 700; font-size: 16px;">K-Businesscom (Systemintegrator)</div>
+            <div style="font-size: 11px; opacity: 0.8;">Implementierung & Umsetzung</div>
+          </div>
+          <div style="display: flex; justify-content: center; gap: 8px; flex-wrap: wrap;">
+            <span style="background: rgba(255,255,255,0.15); padding: 6px 12px; border-radius: 6px; font-size: 10px;">Konfiguration</span>
+            <span style="background: rgba(255,255,255,0.15); padding: 6px 12px; border-radius: 6px; font-size: 10px;">ABAP</span>
+            <span style="background: rgba(255,255,255,0.15); padding: 6px 12px; border-radius: 6px; font-size: 10px;">Migration</span>
+            <span style="background: rgba(255,255,255,0.15); padding: 6px 12px; border-radius: 6px; font-size: 10px;">Schulung</span>
+            <span style="background: rgba(255,255,255,0.15); padding: 6px 12px; border-radius: 6px; font-size: 10px;">Go-Live</span>
+          </div>
+        </div>
+        
+        <!-- SAP Activate Welle -->
+        <div style="margin-top: 16px; background: var(--herba-dark); border-radius: 8px; padding: 12px;">
+          <div style="font-size: 10px; color: var(--herba-text-muted); text-align: center; margin-bottom: 8px;">SAP ACTIVATE PHASEN</div>
+          <div style="display: flex; gap: 4px;">
+            <div style="flex: 5; background: #14B8A6; height: 8px; border-radius: 4px 0 0 4px;" title="Discover 5%"></div>
+            <div style="flex: 5; background: #3B82F6; height: 8px;" title="Prepare 5%"></div>
+            <div style="flex: 15; background: #8B5CF6; height: 8px;" title="Explore 15%"></div>
+            <div style="flex: 55; background: var(--tta-orange); height: 8px;" title="Realize 55%"></div>
+            <div style="flex: 15; background: #EC4899; height: 8px;" title="Deploy 15%"></div>
+            <div style="flex: 5; background: #F59E0B; height: 8px; border-radius: 0 4px 4px 0;" title="Run 5%"></div>
+          </div>
+        </div>
+      </div>
+    </div>
+    
+    <!-- PARTNER-KOOPERATION: ENABLER STATT KRITIKER -->
+    <div style="background: linear-gradient(135deg, rgba(34,197,94,0.1) 0%, rgba(59,130,246,0.1) 100%); border: 2px solid rgba(34,197,94,0.3); border-radius: 16px; padding: 30px; margin-bottom: 40px;">
+      <div style="text-align: center; margin-bottom: 24px;">
+        <div style="font-size: 12px; color: #22C55E; font-weight: 600; text-transform: uppercase; letter-spacing: 1px; margin-bottom: 8px;">🤝 Unsere Philosophie</div>
+        <h3 style="font-family: 'Space Grotesk', sans-serif; font-size: 22px; color: white; margin: 0;">Enabler, nicht Kritiker</h3>
+      </div>
+      
+      <p style="font-size: 15px; color: var(--herba-text-muted); line-height: 1.8; text-align: center; max-width: 800px; margin: 0 auto 24px;">
+        TIMETOACT tritt nicht als Konkurrent zu bestehenden Partnern auf. 
+        <strong style="color: white;">Wir sind hier, um K-Businesscoms Arbeit zu validieren</strong> und zu helfen, 
+        dass die wertvolle Arbeit bestehender Partner (z.B. PI/PO-Know-how) korrekt in die S/4HANA-Welt migriert wird.
+      </p>
+      
+      <div style="display: grid; grid-template-columns: repeat(3, 1fr); gap: 16px; max-width: 900px; margin: 0 auto;">
+        <div style="background: var(--herba-gray); border-radius: 12px; padding: 20px; text-align: center;">
+          <div style="font-size: 32px; margin-bottom: 12px;">⚙️</div>
+          <div style="font-weight: 600; color: white; margin-bottom: 8px;">K-Businesscom</div>
+          <div style="font-size: 12px; color: var(--herba-text-muted);">Primärer Systemintegrator</div>
+          <div style="font-size: 11px; color: #22C55E; margin-top: 8px;">→ Wir validieren ihre Arbeit</div>
+        </div>
+        <div style="background: var(--herba-gray); border-radius: 12px; padding: 20px; text-align: center;">
+          <div style="font-size: 32px; margin-bottom: 12px;">🔗</div>
+          <div style="font-weight: 600; color: white; margin-bottom: 8px;">Bestehende Partner</div>
+          <div style="font-size: 12px; color: var(--herba-text-muted);">PI/PO, Middleware, Health-Expertise</div>
+          <div style="font-size: 11px; color: #22C55E; margin-top: 8px;">→ Wir schätzen ihr Know-how</div>
+        </div>
+        <div style="background: var(--herba-gray); border-radius: 12px; padding: 20px; text-align: center;">
+          <div style="font-size: 32px; margin-bottom: 12px;">☁️</div>
+          <div style="font-weight: 600; color: white; margin-bottom: 8px;">SAP Austria</div>
+          <div style="font-size: 12px; color: var(--herba-text-muted);">RISE with SAP Provider</div>
+          <div style="font-size: 11px; color: #22C55E; margin-top: 8px;">→ Wir koordinieren mit SAP</div>
+        </div>
+      </div>
+      
+      <div style="background: rgba(218,85,0,0.1); border-radius: 8px; padding: 16px; margin-top: 20px; max-width: 800px; margin-left: auto; margin-right: auto;">
+        <div style="display: flex; gap: 12px; align-items: flex-start;">
+          <span style="font-size: 20px;">💡</span>
+          <div style="font-size: 13px; color: var(--herba-text-muted); line-height: 1.7;">
+            <strong style="color: var(--tta-orange);">Politisch sensibel:</strong> 
+            Wir respektieren bestehende Beziehungen und historisches Know-how. Unsere Rolle ist es, 
+            als <strong style="color: white;">neutraler Enabler</strong> alle Parteien zu unterstützen – 
+            nicht zu ersetzen oder zu kritisieren.
+          </div>
+        </div>
+      </div>
+    </div>
+    
+    <!-- Original Why-Cards -->
+    <div class="why-grid">
+      <div class="why-card">
+        <div class="why-icon">🎯</div>
+        <div class="why-title">100% Herstellerneutral</div>
+        <div class="why-desc">Keine Lizenzprovisionen, keine Vendor-Bindung. Wir empfehlen, was für Sie richtig ist.</div>
+      </div>
+      <div class="why-card">
+        <div class="why-icon">💊</div>
+        <div class="why-title">Pharma-Expertise</div>
+        <div class="why-desc">Erfahrung mit GDP, AMBO, FMD und den speziellen Anforderungen der Pharma-Logistik.</div>
+      </div>
+      <div class="why-card">
+        <div class="why-icon">🔬</div>
+        <div class="why-title">Unabhängige QA</div>
+        <div class="why-desc">Der SI prüft sich nicht selbst. Wir liefern objektive Qualitätssicherung seiner Arbeit.</div>
+      </div>
+      <div class="why-card">
+        <div class="why-icon">⚙️</div>
+        <div class="why-title">Process First</div>
+        <div class="why-desc">Prozesse vor Technologie optimieren. Standard vor Custom. Clean Core vor Legacy.</div>
+      </div>
+      <div class="why-card">
+        <div class="why-icon">👔</div>
+        <div class="why-title">Senior-Only</div>
+        <div class="why-desc">Erfahrene Berater ab Tag 1. Keine Junioren, die auf Ihre Kosten lernen.</div>
+      </div>
+      <div class="why-card">
+        <div class="why-icon">🤝</div>
+        <div class="why-title">Neutrale Instanz</div>
+        <div class="why-desc">Wir arbeiten mit allen Partnern zusammen – K-Businesscom, SAP, bestehende Berater.</div>
+      </div>
+    </div>
+  </section>
+  
+  <!-- CTA -->
+  <section class="cta-section">
+    <div class="cta-content">
+      <h2 class="cta-title">Bereit für das Erstgespräch?</h2>
+      <p class="cta-desc">Lassen Sie uns gemeinsam herausfinden, wie TIMETOACT Ihre RISE Journey optimal begleiten kann.</p>
+      <button class="cta-button" onclick="requestQuote()">Termin vereinbaren →</button>
+    </div>
+  </section>
+  
+  <!-- Disclaimer -->
+  <div style="background: var(--herba-dark); padding: 20px; border-top: 1px solid rgba(255,255,255,0.1);">
+    <div style="max-width: 1200px; margin: 0 auto; font-size: 11px; color: var(--herba-text-muted); line-height: 1.7;">
+      <strong style="color: rgba(255,255,255,0.5);">Hinweise:</strong> 
+      Dieses Dokument dient der Vertriebsunterstützung und enthält Erfahrungswerte aus vergleichbaren Projekten. 
+      Kennzahlen und Einsparungspotenziale sind indikativ und nicht als Garantie zu verstehen. 
+      Alle genannten Aufwände sind Richtwerte und werden im konkreten Angebot auf Basis der tatsächlichen Anforderungen kalkuliert. 
+      Advisory-Leistungen ersetzen keine formale Validierung oder Zertifizierung. 
+      Die genannten Unternehmenskennzahlen basieren auf öffentlichen Quellen und Managementangaben.
+    </div>
+  </div>
+
+  <!-- Footer -->
+  <footer class="footer">
+    <div class="footer-logos">
+      <img src="data:image/png;base64,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" alt="Herba Chemosan" style="height: 40px;">
+      <img src="data:image/png;base64,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" alt="TIMETOACT GROUP" style="height: 35px;">
+    </div>
+    <div class="footer-tagline"><span>We Care.</span> <span>We Drive.</span> <span>We Deliver.</span></div>
+    <div class="footer-copy">© 2025 TIMETOACT GROUP - RISE with SAP Advisory Services</div>
+  </footer>
+  
+  <script>
+    // Vollständige Service-Definitionen mit Beschreibungen und Mehrwert
+    const serviceData = {
+      strategy: {
+        name: 'RISE Strategie Workshop',
+        days: 3,
+        phase: 'Discover',
+        recommended: true,
+        description: 'Gemeinsame Definition der Transformationsziele, Scope-Festlegung und Roadmap-Entwicklung. Wir analysieren Ihre strategischen Treiber und entwickeln einen realistischen Zeitplan.',
+        benefit: 'Klare Zielvorgaben von Anfang an vermeiden Scope Creep und Budgetüberschreitungen. Sie starten mit einem abgestimmten Plan statt im Blindflug.',
+        deliverables: ['Strategiedokument', 'Scope-Definition', 'High-Level Roadmap', 'Stakeholder-Map']
+      },
+      landscape: {
+        name: 'Systemlandschaft Analyse',
+        days: 5,
+        phase: 'Discover',
+        recommended: true,
+        description: 'Detaillierte Ist-Aufnahme Ihrer SAP-Landschaft, KNAPP WMS-Integration, Legacy-Systeme (Host seit 2009) und aller Schnittstellen. Identifikation von Abhängigkeiten und Risiken.',
+        benefit: 'Vermeidung von bösen Überraschungen in der Realize-Phase. Sie kennen alle Abhängigkeiten bevor der SI mit der Implementierung beginnt.',
+        deliverables: ['Systemlandkarte', 'Schnittstellen-Inventar', 'Risiko-Register', 'Abhängigkeitsmatrix']
+      },
+      businesscase: {
+        name: 'Business Case Validierung',
+        days: 4,
+        phase: 'Discover',
+        recommended: false,
+        description: 'Unabhängige Prüfung des vom SI oder SAP vorgelegten Business Cases. Validierung der TCO-Annahmen, ROI-Berechnungen und versteckter Kostentreiber.',
+        benefit: 'Schutz vor zu optimistischen Annahmen. Sie investieren nur, wenn der Business Case einer kritischen Prüfung standhält.',
+        deliverables: ['Business Case Review', 'TCO-Validierung', 'Risiko-adjustierter ROI', 'Handlungsempfehlung']
+      },
+      readiness: {
+        name: 'Readiness Assessment',
+        days: 3,
+        phase: 'Discover',
+        recommended: false,
+        description: 'Bewertung der organisatorischen, technischen und prozessualen Bereitschaft für die Transformation. Gap-Analyse und Handlungsempfehlungen.',
+        benefit: 'Früherkennung von Hindernissen, bevor sie das Projekt verzögern. Sie können Gaps rechtzeitig adressieren.',
+        deliverables: ['Readiness-Report', 'Gap-Analyse', 'Handlungsplan', 'Risikobewertung']
+      },
+      governance: {
+        name: 'Projekt-Governance Setup',
+        days: 4,
+        phase: 'Prepare',
+        recommended: true,
+        description: 'Etablierung einer robusten Governance-Struktur: Steering Committee, Eskalationswege, Reporting-Rhythmus, RACI-Matrix und Entscheidungsprozesse.',
+        benefit: 'Klare Verantwortlichkeiten verhindern Entscheidungsstau. Probleme werden früh eskaliert statt verschleppt.',
+        deliverables: ['Governance-Handbuch', 'RACI-Matrix', 'Eskalationsmatrix', 'Reporting-Templates']
+      },
+      cleancore: {
+        name: 'Clean Core Assessment',
+        days: 8,
+        phase: 'Prepare',
+        recommended: true,
+        description: 'Analyse Ihres Custom Codes (Z-Programme, ABAP-Erweiterungen, User Exits). Bewertung nach SAP Clean Core Prinzipien und Empfehlung für Migrate/Retire/Rebuild.',
+        benefit: 'Erfahrungsgemäß spart jede Custom-Entwicklung, die Sie NICHT migrieren, ein Vielfaches der Analysekosten in der Realize-Phase. Clean Core = schnellere Updates.',
+        deliverables: ['Custom Code Inventar', 'Clean Core Score', 'Empfehlungsliste', 'Aufwandsschätzung']
+      },
+      integration: {
+        name: 'Integrations-Design Review',
+        days: 8,
+        phase: 'Explore',
+        recommended: true,
+        description: 'Prüfung des Integrations-Designs für KNAPP WMS, Sanodat, Salesforce, SAP BTP und weitere Drittsysteme. Bewertung der Middleware-Strategie.',
+        benefit: 'Schnittstellen-Fehler sind die #1 Ursache für Go-Live-Verschiebungen. Frühzeitige Review verhindert späte Überraschungen.',
+        deliverables: ['Integrations-Architektur', 'Interface-Spezifikationen', 'Middleware-Empfehlung', 'Risikobewertung']
+      },
+      security: {
+        name: 'Security & Compliance Konzept',
+        days: 6,
+        phase: 'Prepare',
+        recommended: true,
+        description: 'Erstellung eines Pharma-spezifischen Security-Konzepts: GDP-Compliance, AMBO 2009, NIS2-Anforderungen, DSGVO, Berechtigungskonzept und Audit-Trail-Anforderungen.',
+        benefit: 'Compliance-Anforderungen sind im Pharma-Bereich nicht verhandelbar. Frühzeitige Planung verhindert teure Nacharbeiten und Audit-Findings.',
+        deliverables: ['Security-Konzept', 'Compliance-Matrix', 'Berechtigungskonzept', 'Audit-Checkliste']
+      },
+      fitstandard: {
+        name: 'Fit-to-Standard Begleitung',
+        days: 10,
+        phase: 'Explore',
+        recommended: true,
+        description: 'Unabhängige Begleitung der Fit-to-Standard Workshops. Wir stellen sicher, dass Gaps korrekt identifiziert werden und hinterfragen vorgeschlagene Customizations kritisch.',
+        benefit: 'Erfahrungsgemäß spart jede verhinderte unnötige Customization erheblich in Entwicklung und lebenslanger Wartung. Wir sind Ihr Anwalt für den Standard.',
+        deliverables: ['Workshop-Protokolle', 'Gap-Bewertung', 'Customization-Empfehlung', 'Standard-Alternativen']
+      },
+      prozess: {
+        name: 'Prozess-Workshops Pharma',
+        days: 15,
+        phase: 'Explore',
+        recommended: true,
+        description: 'Moderation und Begleitung der Soll-Prozess-Definition für Pharma-Großhandel: Order-to-Cash, Procure-to-Pay, Warehouse Management, FMD-Serialisierung, Chargen-Handling.',
+        benefit: 'Pharma-erfahrene Moderation beschleunigt Workshops um 30%. Sie vermeiden Endlos-Diskussionen durch Best-Practice-Vorlagen.',
+        deliverables: ['Soll-Prozesse (BPMN)', 'Delta-Anforderungen', 'Pharma Best Practices', 'Priorisierte Backlog']
+      },
+      gap: {
+        name: 'Gap-Analyse & Extensibility',
+        days: 6,
+        phase: 'Explore',
+        recommended: false,
+        description: 'Systematische Analyse der Lücken zwischen Standard und Anforderungen. Bewertung der Extensibility-Optionen (BTP, Side-by-Side, In-App).',
+        benefit: 'Klare Entscheidungsgrundlage für Build vs. Buy. Sie vermeiden Over-Engineering und wählen die richtige Extensibility-Strategie.',
+        deliverables: ['Gap-Katalog', 'Extensibility-Empfehlung', 'Aufwandsschätzung', 'Priorisierung']
+      },
+      migration: {
+        name: 'Datenmigrations-Konzept',
+        days: 5,
+        phase: 'Explore',
+        recommended: false,
+        description: 'Prüfung der Datenmigrationsstrategie: Migrationsobjekte, Datenqualitäts-Anforderungen, Bereinigungsbedarfe, Mapping-Konzept für 43.000+ Artikel.',
+        benefit: 'Datenqualität ist der versteckte Projektkiller. Frühzeitige Analyse gibt Zeit für Bereinigung vor der heißen Phase.',
+        deliverables: ['Migrations-Konzept', 'Datenqualitäts-Assessment', 'Bereinigungsplan', 'Mapping-Validierung']
+      },
+      qa: {
+        name: 'Implementierungs-QA laufend',
+        days: 30,
+        phase: 'Realize',
+        recommended: true,
+        description: 'Kontinuierliche Qualitätssicherung während der gesamten Realize-Phase: Wöchentliche Reviews, Sprint-Abnahmen, Code-Stichproben, Dokumentations-Prüfung, Risiko-Tracking.',
+        benefit: 'Probleme werden in Wochen statt Monaten erkannt. Sie vermeiden den "Big Bang" am Ende, wenn alles auf einmal eskaliert.',
+        deliverables: ['Wöchentliche QA-Reports', 'Issue-Tracker', 'Risiko-Dashboard', 'Sprint-Abnahmen']
+      },
+      intreal: {
+        name: 'Integrations-QA KNAPP/WMS',
+        days: 25,
+        phase: 'Realize',
+        recommended: true,
+        description: 'Spezialisierte QA für die kritische KNAPP-Integration: OSR Shuttle, Pick-it-Easy, Itemizer. End-to-End-Tests der Warenflüsse, Performance-Tests für 110.000 Picks/Tag. Die Integration eines hochautomatisierten Lagers an S/4HANA EWM Cloud ist hochkomplex und erfordert intensive Begleitung.',
+        benefit: 'KNAPP ist Ihr Herzstück – eine fehlerhafte Integration stoppt den gesamten Betrieb. Die 25 PT sind als Baseline geplant. Empfehlung: optionalen Puffer von +10 PT einplanen, der nur bei Bedarf abgerufen wird.',
+        deliverables: ['Integrations-Testfälle', 'E2E-Test-Protokolle', 'Performance-Report', 'Abnahme-Empfehlung', 'Eskalations-Protokolle']
+      },
+      migbegl: {
+        name: 'Datenmigrations-Begleitung',
+        days: 10,
+        phase: 'Realize',
+        recommended: true,
+        description: 'Begleitung der Mock-Migrationen und Produktiv-Migration: Validierung der Migrationsergebnisse, Vollständigkeitsprüfung, Abstimmung mit Fachbereichen.',
+        benefit: 'Falsche Daten im Produktivsystem sind kaum korrigierbar. Wir stellen sicher, dass nur geprüfte Daten übernommen werden.',
+        deliverables: ['Mock-Migrations-Reports', 'Validierungs-Checklisten', 'Differenz-Analysen', 'Go/No-Go Empfehlung']
+      },
+      test: {
+        name: 'Test-Management Pharma',
+        days: 12,
+        phase: 'Realize',
+        recommended: false,
+        description: 'Aufbau und Steuerung des Test-Managements: Teststrategie, Testfall-Design, UAT-Koordination, Regressionstests, Defect-Management für Pharma-Prozesse.',
+        benefit: 'Strukturiertes Testen findet Fehler systematisch. Sie gehen nicht mit bekannten Fehlern live.',
+        deliverables: ['Teststrategie', 'Testfall-Katalog', 'UAT-Protokolle', 'Defect-Report']
+      },
+      cutover: {
+        name: 'Cutover-Planung 24h-Betrieb',
+        days: 10,
+        phase: 'Deploy',
+        recommended: true,
+        description: 'Detaillierte Cutover-Planung für den 24h-Pharma-Betrieb: KNAPP-Synchronisation, Fallback-Szenarien, Go/No-Go-Kriterien, Notdienst-Absicherung.',
+        benefit: 'Im Pharma-Großhandel gibt es keine Downtime-Toleranz. Ein missglückter Cutover gefährdet Menschenleben. Wir planen für den Ernstfall.',
+        deliverables: ['Cutover-Playbook', 'Minuten-genauer Zeitplan', 'Fallback-Prozeduren', 'Go/No-Go Checkliste']
+      },
+      golive: {
+        name: 'Go-Live Support War Room',
+        days: 10,
+        phase: 'Deploy',
+        recommended: true,
+        description: 'Vor-Ort-Unterstützung während Go-Live: War Room Koordination, Echtzeit-Problemlösung, Eskalationsmanagement, Kommunikation mit allen Stakeholdern.',
+        benefit: 'Im Ernstfall zählt jede Minute. Erfahrene Krisenmanager halten den Überblick, wenn alle anderen im Chaos versinken.',
+        deliverables: ['War Room Setup', 'Echtzeit-Monitoring', 'Issue-Resolution', 'Tägliche Status-Reports']
+      },
+      training: {
+        name: 'Training Review Pharma',
+        days: 6,
+        phase: 'Deploy',
+        recommended: false,
+        description: 'Qualitätsprüfung der Schulungsmaterialien und -durchführung: Pharma-Compliance in Trainings, GDP-relevante Inhalte, Prüfung der Trainer-Qualifikation.',
+        benefit: 'Schlechte Schulung = schlechte Nutzung = verfehlter ROI. Wir stellen sicher, dass Ihre Mitarbeiter wirklich arbeitsfähig sind.',
+        deliverables: ['Training-Review', 'Compliance-Check', 'Verbesserungsvorschläge', 'Readiness-Bewertung']
+      },
+      hypercare: {
+        name: 'Hypercare Begleitung',
+        days: 20,
+        phase: 'Run',
+        recommended: true,
+        description: '4-12 Wochen intensive Begleitung nach Go-Live: Tägliche Reviews, Performance-Monitoring, Issue-Priorisierung, Eskalationsmanagement, Lessons Learned.',
+        benefit: 'Die ersten Wochen entscheiden über Erfolg oder Misserfolg. Wir stabilisieren das System, während der SI bereits zum nächsten Projekt schaut.',
+        deliverables: ['Tägliche Status-Reports', 'Issue-Tracker', 'Performance-Dashboard', 'Lessons Learned']
+      },
+      value: {
+        name: 'Value Realization Review',
+        days: 5,
+        phase: 'Run',
+        recommended: false,
+        description: 'Messung der tatsächlich realisierten Benefits gegen den ursprünglichen Business Case: KPI-Tracking, ROI-Validierung, Optimierungspotenziale.',
+        benefit: 'Ohne Messung wissen Sie nie, ob sich die Investition gelohnt hat. Value Tracking schafft Transparenz für das Management.',
+        deliverables: ['Value-Dashboard', 'KPI-Vergleich', 'ROI-Berechnung', 'Optimierungsempfehlungen']
+      }
+    };
+    
+    const selectedServices = new Map();
+    const expandedServices = new Set();
+    const DAILY_RATE = 1800;
+    
+    function toggleService(card) {
+      const serviceId = card.dataset.service;
+      const service = serviceData[serviceId];
+      if (!service) return;
+      
+      if (selectedServices.has(serviceId)) {
+        selectedServices.delete(serviceId);
+        card.classList.remove('selected');
+      } else {
+        selectedServices.set(serviceId, { name: service.name, days: service.days });
+        card.classList.add('selected');
+      }
+      updateCalculation();
+    }
+    
+    function toggleServiceDetails(event, serviceId) {
+      event.stopPropagation();
+      const card = document.querySelector(`[data-service="${serviceId}"]`);
+      if (!card) return;
+      
+      if (expandedServices.has(serviceId)) {
+        expandedServices.delete(serviceId);
+        card.classList.remove('expanded');
+        const details = card.querySelector('.service-details');
+        if (details) details.remove();
+      } else {
+        expandedServices.add(serviceId);
+        card.classList.add('expanded');
+        const service = serviceData[serviceId];
+        if (!service) return;
+        
+        const deliverablesHtml = service.deliverables.map(d => 
+          `<span class="service-deliverable">📄 ${d}</span>`
+        ).join('');
+        
+        const detailsHtml = `
+          <div class="service-details" style="display:block;">
+            <div class="service-description">${service.description}</div>
+            <div class="service-benefit">
+              <div class="service-benefit-label">💡 Ihr Mehrwert</div>
+              <div class="service-benefit-text">${service.benefit}</div>
+            </div>
+            <div style="font-size:10px;color:var(--herba-text-muted);margin-bottom:8px;text-transform:uppercase;letter-spacing:1px;">Liefergegenstände</div>
+            <div class="service-deliverables">${deliverablesHtml}</div>
+          </div>
+        `;
+        card.insertAdjacentHTML('beforeend', detailsHtml);
+      }
+    }
+    
+    // Initialize service cards with expand functionality
+    document.addEventListener('DOMContentLoaded', function() {
+      document.querySelectorAll('.service-card').forEach(card => {
+        const serviceId = card.dataset.service;
+        const nameEl = card.querySelector('.service-name');
+        if (nameEl && !nameEl.querySelector('.expand-icon')) {
+          nameEl.innerHTML = nameEl.textContent + ' <span class="expand-icon" onclick="toggleServiceDetails(event, \'' + serviceId + '\')">▶</span>';
+        }
+      });
+    });
+    
+    function removeService(serviceId) {
+      selectedServices.delete(serviceId);
+      document.querySelector(`[data-service="${serviceId}"]`)?.classList.remove('selected');
+      updateCalculation();
+    }
+    
+    function resetSelection() {
+      selectedServices.clear();
+      document.querySelectorAll('.service-card-full.selected').forEach(c => c.classList.remove('selected'));
+      updateCalculation();
+    }
+    
+    function updateCalculation() {
+      const calcContent = document.getElementById('calc-content');
+      const calcSummary = document.getElementById('calc-summary');
+      const calcItems = document.getElementById('calc-items');
+      if (selectedServices.size === 0) {
+        calcContent.style.display = 'block';
+        calcSummary.style.display = 'none';
+        return;
+      }
+      calcContent.style.display = 'none';
+      calcSummary.style.display = 'block';
+      let totalDays = 0;
+      let itemsHtml = '';
+      selectedServices.forEach((s, id) => {
+        totalDays += s.days;
+        itemsHtml += `<div class="calc-item"><span class="calc-item-name">${s.name}</span><span class="calc-item-days">${s.days} PT</span><button class="calc-item-remove" onclick="removeService('${id}')">×</button></div>`;
+      });
+      calcItems.innerHTML = itemsHtml;
+      document.getElementById('calc-count').textContent = selectedServices.size;
+      document.getElementById('calc-days').textContent = totalDays + ' PT';
+      document.getElementById('calc-total').textContent = (totalDays * DAILY_RATE).toLocaleString('de-DE') + ' €';
+    }
+    
+    function requestQuote() {
+      let body = 'Angebotsanfrage: RISE with SAP Advisory für Herba Chemosan\n\n';
+      if (selectedServices.size > 0) {
+        body += 'Ausgewählte Services:\n';
+        selectedServices.forEach(s => { body += `- ${s.name} (${s.days} PT)\n`; });
+        const total = Array.from(selectedServices.values()).reduce((sum, s) => sum + s.days, 0);
+        body += `\nGeschätzte Personentage: ${total} PT\n`;
+      }
+      body += '\nBitte senden Sie mir ein unverbindliches Angebot.';
+      window.location.href = `mailto:erp-advisory@timetoact.de?subject=${encodeURIComponent('Angebotsanfrage: Herba Chemosan RISE Advisory')}&body=${encodeURIComponent(body)}`;
+    }
+    
+    function scrollToPhase(phase) {
+      document.getElementById('phase-' + phase)?.scrollIntoView({ behavior: 'smooth', block: 'start' });
+    }
+    
+    function toggleFragen(header) {
+      header.parentElement.classList.toggle('open');
+    }
+    
+    function exportFragenkatalog() {
+      let content = 'FRAGENKATALOG - HERBA CHEMOSAN RISE WITH SAP\n' + '='.repeat(50) + '\n\n';
+      content += 'Erstellt am: ' + new Date().toLocaleDateString('de-DE') + '\n\n';
+      document.querySelectorAll('.fragen-gruppe').forEach(g => {
+        content += '\n' + g.querySelector('.fragen-titel').textContent + '\n' + '-'.repeat(40) + '\n';
+        g.querySelectorAll('.frage-item').forEach(item => {
+          content += '\n' + item.querySelector('.frage-nr').textContent + ': ' + item.querySelector('.frage-text').textContent + '\n';
+          content += 'Antwort: ' + (item.querySelector('.frage-antwort').value || '(Keine Antwort)') + '\n';
+        });
+      });
+      const blob = new Blob([content], { type: 'text/plain;charset=utf-8' });
+      const a = document.createElement('a');
+      a.href = URL.createObjectURL(blob);
+      a.download = 'Herba_Chemosan_Fragenkatalog_' + new Date().toISOString().split('T')[0] + '.txt';
+      a.click();
+    }
+    
+    function emailFragenkatalog() {
+      let body = 'Fragenkatalog für Herba Chemosan RISE with SAP\n\n';
+      document.querySelectorAll('.fragen-gruppe').forEach(g => {
+        body += g.querySelector('.fragen-titel').textContent + ':\n';
+        g.querySelectorAll('.frage-item').forEach(item => {
+          const antwort = item.querySelector('.frage-antwort').value;
+          if (antwort) {
+            body += item.querySelector('.frage-nr').textContent + ': ' + item.querySelector('.frage-text').textContent + '\n-> ' + antwort + '\n\n';
+          }
+        });
+      });
+      window.location.href = 'mailto:erp-advisory@timetoact.de?subject=' + encodeURIComponent('Fragenkatalog: Herba Chemosan RISE') + '&body=' + encodeURIComponent(body);
+    }
+  </script>
+</body>
+</html>
